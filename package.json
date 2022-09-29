@@ -5,15 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve"
+    "start": "nodemon server/server.js",
+    "dev": "nodemon server/server.js & NODE_ENV=development webpack serve"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PRTRI8-Star-Nosed-Moles/Scratch-Project.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mariko Iwata, Yarden Edry, Victor He, Henry Halse, Judy Wu",
   "license": "ISC",
   "bugs": {
     "url": ""
