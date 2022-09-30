@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/server.js",
-    "dev": "nodemon server/server.js & NODE_ENV=development webpack serve"
+    "dev": "nodemon server/server.js & NODE_ENV=development webpack serve",
+    "dev2": "concurrently \"cross-env NODE_ENV=development webpack serve --open\" \"cross-env NODE_ENV=development nodemon server/server.js\""
   },
   "repository": {
     "type": "git",
