@@ -3,10 +3,30 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-// const cors = require('cors');
-// app.use(cors());
-
+// handle parsing request body
 app.use(express.json());
+
+// login
+// sign-up
+// user
+// pet
+
+// handle requests to server using router
+
+// require routers
+const loginRouter = require('./routes/login.js');
+// const signupRouter = require('./routes/signup.js');
+const userRouter = require('./routes/user.js');
+const petRouter = require('./routes/pet.js');
+
+// www.rentapet.com/login -> login website 8080
+// do requests to www.server.com/api/login 3000
+
+// use routers with endpoints
+app.use('/api/login', loginRouter);
+// app.use('/api/signup', signupRouter);
+app.use('/api/user', userRouter);
+app.use('/api/pet', petRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).json({"unknown": "route"}));
