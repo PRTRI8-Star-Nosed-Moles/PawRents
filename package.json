@@ -1,6 +1,7 @@
 {
   "name": "rent-a-pet",
   "version": "1.0.0",
+  "proxy": "http://localhost:3000",
   "description": "a marketplace to facilitate matchmaking users with the perfect, temporary pet companion--guaranteed cute!",
   "main": "index.js",
   "scripts": {
