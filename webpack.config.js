@@ -36,6 +36,12 @@ module.exports = {
       directory: path.resolve(__dirname, "./dist"),
     },
     historyApiFallback: true,
+    proxy: {
+      '/api/*': {
+        target: 'http://localhost:3000/',
+        secure: false
+      }
+    }
   },
   // plugins: [
   //   new HtmlWebpackPlugin({
