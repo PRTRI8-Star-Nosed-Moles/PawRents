@@ -15,18 +15,19 @@ app.use(express.json());
 
 // require routers
 const loginRouter = require('./routes/login.js');
-// const signupRouter = require('./routes/signup.js');
 const userRouter = require('./routes/user.js');
 const petRouter = require('./routes/pet.js');
+const reservationRouter = require('./routes/reservation.js');
 
 // www.rentapet.com/login -> login website 8080
 // do requests to www.server.com/api/login 3000
 
 // use routers with endpoints
 app.use('/api/login', loginRouter);
-// app.use('/api/signup', signupRouter);
 app.use('/api/user', userRouter);
 app.use('/api/pet', petRouter);
+app.use('/api/reservation', reservationRouter);
+
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).json({"unknown": "route"}));
