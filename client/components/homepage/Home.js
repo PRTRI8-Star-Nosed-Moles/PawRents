@@ -1,56 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from "react";
+import { Login } from './Login';
+import { Signup } from './Signup';
 
 export const Home = () => {
 
-    const [formData, setFormData] = useState({
-        username: '',
-        password: ''
-    })
+  const [loginSignup, setLoginSignup] = useState('login')
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        // //add fetch to check pswd and username
-        setFormData({
-            username: '',
-            password: ''
-        })
-    }
-
-    const changeUsername = (e) => {
-      setFormData({
-        ...formData,
-        username: e.target.value
-      })
-      console.log(formData)
-    }
-
-    const changePassword = (e) => {
-        setFormData({
-            ...formData,
-            password: e.target.value
-        })
-    }
-
+  const condition = () => {
+    loginSignup === 'login' ? setLoginSignup('signup') : setLoginSignup('login')
+  }
+ 
     return (
-        <div>
-          <h1>Home</h1>
-          <img src="#"/>
-          <form onSubmit={handleSubmit}>
-            <label>
-              Username:
-              <input type="text" required onChange={changeUsername} value={formData.username} name="username"/>
-            </label>
-            <p></p>
-            <label>
-              Password:
-              <input type="password" required onChange={changePassword} value={formData.password} name="password"/>
-            </label>
-            <p></p>
-            <input type="submit" value="login" />
-          </form>
-          <Link to="/signup">Sign up</Link>
+        <div> 
+          {loginSignup === 'login' ? <Login /> : <Signup />}
+          <button onClick={condition}>{loginSignup === 'login' ? 'Sign Up' : 'Login'}</button>
         </div>
+         
     )
 }

@@ -19,7 +19,7 @@ export const Signup = () => {
         // //add fetch to check pswd and username
         const data = await fetch('/api/user', {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(userData)
         })
         const response = await data.json()
@@ -86,7 +86,7 @@ export const Signup = () => {
 
     return (
         <div>
-            <h1>Signup</h1>
+            <h4>Signup</h4>
             <form onSubmit={handleSubmit}>
                 <label>
                     First Name:
@@ -97,6 +97,7 @@ export const Signup = () => {
                         onChange={changeFirstName}
                     ></input>
                 </label>
+                <p></p>
                 <label>
                     Last Name:
                     <input 
@@ -146,6 +147,7 @@ export const Signup = () => {
                         onChange={changePassword}
                     ></input>
                 </label>
+                {userData.password !== userData.password2 ? <p style={{color: 'red'}}>Passwords must match</p> : ""}
                 <p></p>
                 <label>
                     Verify Password:
