@@ -14,9 +14,16 @@ export const Signup = () => {
         password2: ''
     })
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         // //add fetch to check pswd and username
+        const data = await fetch('/api/user', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(userData)
+        })
+        const response = await data.json()
+        console.log(response)
         setNewUser({
             firstName: '',
             lastName: '',
