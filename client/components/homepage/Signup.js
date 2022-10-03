@@ -86,7 +86,7 @@ export const Signup = () => {
 
     return (
         <div>
-            <h1>Signup</h1>
+            <h4>Signup</h4>
             <form onSubmit={handleSubmit}>
                 <label>
                     First Name:
@@ -97,6 +97,7 @@ export const Signup = () => {
                         onChange={changeFirstName}
                     ></input>
                 </label>
+                <p></p>
                 <label>
                     Last Name:
                     <input 
@@ -146,7 +147,7 @@ export const Signup = () => {
                         onChange={changePassword}
                     ></input>
                 </label>
-                {userData.password !== userData.password2 ? <p>Passwords must match</p> : ""}
+                {userData.password !== userData.password2 ? <p style={{color: 'red'}}>Passwords must match</p> : ""}
                 <p></p>
                 <label>
                     Verify Password:
