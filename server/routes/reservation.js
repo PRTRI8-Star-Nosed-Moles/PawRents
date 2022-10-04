@@ -5,4 +5,6 @@ const router = express.Router();
 
 //create
 
+//read
+
 module.exports = router;
