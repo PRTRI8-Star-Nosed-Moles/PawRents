@@ -9,7 +9,7 @@ petController.createPet = async (req, res, next) => {
     const { name, age, weight, species, breed, image_url, price, bio } = req.body;
 
     const values = [ name, age, weight, species, breed, image_url, price, bio ];
-    const queryString = 'INSERT INTO "pet" (name, age, weight, species, breed, image_url, price, bio) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
+    const queryString = 'INSERT INTO pet (name, age, weight, species, breed, image_url, price, bio) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
     const data = await db.query(queryString, values);
 
     res.locals.pet = await data.rows[0];
