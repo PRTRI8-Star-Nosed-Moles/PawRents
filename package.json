@@ -1,6 +1,7 @@
 {
   "name": "rent-a-pet",
   "version": "1.0.0",
+  "proxy": "http://localhost:3000",
   "description": "a marketplace to facilitate matchmaking users with the perfect, temporary pet companion--guaranteed cute!",
   "main": "index.js",
   "scripts": {
@@ -40,8 +41,10 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
+    "cross-env": "^7.0.3",
     "express": "^4.18.1",
     "node-fetch": "^3.2.10",
+    "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1"
