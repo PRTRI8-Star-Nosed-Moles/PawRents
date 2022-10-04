@@ -32,6 +32,7 @@ userController.createUser = async (req, res, next) => {
 
 userController.getUser = async (req, res, next) => {
   console.log('accessing userController.getUser');
+  console.log(req.body)
 
   let queryString;
   if (req.params.username !== undefined) {
