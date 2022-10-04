@@ -2,9 +2,15 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 // handle parsing request body
 app.use(express.json());
+
+app.use(cors());
+
+app.use(bodyParser.json());
 
 // login
 // sign-up

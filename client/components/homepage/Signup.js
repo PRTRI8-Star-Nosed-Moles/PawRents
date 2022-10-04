@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Signup = () => {
+
+    const navigate = useNavigate()
 
     const [userData, setNewUser] = useState({
         firstName: '',
@@ -17,13 +19,18 @@ export const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         // //add fetch to check pswd and username
-        const data = await fetch('/api/user', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(userData)
-        })
-        const response = await data.json()
-        console.log(response)
+        try {
+            const data = await fetch('/api/user', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(userData)
+            })
+            const response = await data.json()
+            console.log(response)
+            navigate('/marketplace', {state: {username: response.username}})
+        } catch(err) {
+            console.log(err)
+        }
         setNewUser({
             firstName: '',
             lastName: '',
@@ -85,7 +92,7 @@ export const Signup = () => {
     }
 
     return (
-        <div>
+        <div className = "signup-form">
             <h4>Signup</h4>
             <form onSubmit={handleSubmit}>
                 <label>
@@ -141,7 +148,7 @@ export const Signup = () => {
                 <label>
                     Password:
                     <input 
-                        type="type"
+                        type="password"
                         name="password"
                         value={userData.password}
                         onChange={changePassword}
@@ -152,7 +159,7 @@ export const Signup = () => {
                 <label>
                     Verify Password:
                     <input 
-                        type="type"
+                        type="password"
                         name="password2"
                         value={userData.password2}
                         onChange={changePassword2}

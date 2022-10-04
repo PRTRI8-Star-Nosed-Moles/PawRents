@@ -1,17 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 export const Login = () => {
+
+    const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     })
 
-    const handleSubmit = (e) => {
+    const [invalidLogin, setInvalidLogin] = useState('')
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        // //add fetch to check pswd and username
+
+        try {
+          const response = await fetch('/api/login', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+          })
+          const data = await response.json()
+          if (data.status === true) {
+            navigate('/marketplace', {state: {username: formData.username}})
+          } else {
+            setInvalidLogin('invalid')
+          }
+        } catch(err) {
+          console.log(err)
+        }
+        
         setFormData({
             username: '',
             password: ''
@@ -49,6 +69,7 @@ export const Login = () => {
             <p></p>
             <input type="submit" value="Submit" />
           </form>
+          {invalidLogin === 'invalid' ? <p>Username and password invalid</p> : ''}
         </div>
     )
 }
