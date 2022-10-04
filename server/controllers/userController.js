@@ -1,25 +1,33 @@
 const db = require('../models/pawrentsModel.js');
 
+const bcrypt = require('bcryptjs');
+const SALT_WORK_FACTOR = 10;
+
 const userController = {};
 
-userController.createUser = (req, res, next) => {
+userController.createUser = async (req, res, next) => {
   console.log('inside userController.createUser');
 
   const { username, password, firstName, lastName, zipcode, email } = req.body;
-  const values = [ username, password, firstName, lastName, zipcode, email ];
+
+  console.log('password not hashed', password);
+  const hashedPassword = await bcrypt.hash(password, SALT_WORK_FACTOR, (err, hash) => {
+    console.log(hash);
+    if (err) console.log('error', err);
+  });
+
+  const values = [ username, hashedPassword, firstName, lastName, zipcode, email ];
   const queryString = 'INSERT INTO "user" (username, password, firstname, lastname, zipcode, email) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
-  db.query(queryString, values)
-    .then(data => {
-        console.log('createUser data --> ', data);
-        res.locals.user = data.rows[0];
-        return next();
-    })
-    .catch(err => {
-      return next({
-        log: 'Express error handler caught error in userController.createUser',
-        message: { err: 'userController.createUser: check server log for details' }
-      });
+  try {
+    const data = await db.query(queryString, values);
+    res.locals.user = data.rows[0];
+    return next();
+  } catch (error) {
+    return next({
+      log: 'Express error handler caught error in userController.createUser',
+      message: { err: 'userController.createUser: check server log for details' }
     });
+  }
 };
 
 userController.getUser = async (req, res, next) => {
