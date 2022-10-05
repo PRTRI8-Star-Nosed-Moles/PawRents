@@ -4,6 +4,11 @@
 
 body {
     background-color: $tan;
+    height: 100vh;
+}
+
+.app-container {
+    height: 100%;
 }
 
 /*
@@ -11,9 +16,8 @@ form class is div around entire form in signup
 */
 .navBar { 
     display: grid;
-    margin-bottom: 15px;
+    // margin-bottom: 15px;
     padding: 5px;
-    
     background-color: $brown;
     border: 1px solid $brown;
 }
@@ -22,7 +26,6 @@ form class is div around entire form in signup
     font-family: $headerFont;
     margin: 1em;
     font-size: 1.5em;
-    
 }
 
 .navBar ul {
@@ -57,11 +60,15 @@ h4 {
 .formInput {
     font-family: $bodyFont;
     margin: .5em;
+    border-radius: 6px;
+    padding: 4px;
 }
 
 .buttonStyles {
     font-family: $headerFont;
     margin: .5em;
+    border-radius: 6px;
+    padding: 6px 8px;
 }
 
 .buttonStyles input[type="text"] {
@@ -69,11 +76,28 @@ h4 {
     border-radius: 3px;
 }
 
+.splashContainer {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 10vw;
+    background-image: url("https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; 
+}
+
 .loginForm {
     display: flex;
+    padding: 20px;
     flex-direction: column;
     align-items: center;
+    width: 400px;
+    // padding-left: 20vh;
     justify-content: center;
+    border: 4px solid $brown;
+    border-radius: 10px;
+    background-color: $tanOpacity;
 }
 
 .signup-form {
@@ -87,7 +111,6 @@ h4 {
 .signup-form form div {
     width: 300px;
     margin: 5px;
-
 }  
 
 .signup-form form div input {
