@@ -8,12 +8,11 @@ export const Navbar = () => {
           <div className='header'>
               <ul>
                 <Link to="/" >Logo-Home</Link>
-                <Link to="/Marketplace" >Marketplace</Link>
-                <Link to="/Account" >Account</Link>
+                <Link to="/marketplace" >Marketplace</Link>
+                <Link to="/account" >Account</Link>
               </ul>
           </div>
      
     )
-  }
+}
   
-// export default Navbar;
