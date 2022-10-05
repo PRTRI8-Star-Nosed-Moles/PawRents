@@ -9,7 +9,7 @@ router.post('/', reservationController.createReservation, (req, res) => {
 });
 
 // read - user rental history
-router.get('/user/:userId', reservationController.readUserReservation, (req, res) => {
+router.get('/user/:username', reservationController.readUserReservation, (req, res) => {
   return res.status(200).json(res.locals.reservations); 
 });
 

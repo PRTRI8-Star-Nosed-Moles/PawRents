@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { PetCard } from './PetCard';
+import { useLocation } from 'react-router-dom';
 
 
 export const Marketplace = ({ items }) => {
     const [pets, setPets] = useState([])
+
+    const location = useLocation();
+
+    console.log(sessionStorage.getItem('username'))
     
     const fetchPets = async () => {
       try {
@@ -24,7 +29,11 @@ export const Marketplace = ({ items }) => {
 
     return ( 
         <div id='marketplace' className='cards'>
-            <header>Marketplace</header>
+<<<<<<< HEAD
+            <h4>Marketplace</h4>
+=======
+            {/* <header>Marketplace</header> */}
+>>>>>>> 9ea6da5cc9f35213c1f2c83a220a872f227c5494
             {/* <div><PetCard/></div> */}
         <section className='cards'>
             {pets.map((pet, i) => (

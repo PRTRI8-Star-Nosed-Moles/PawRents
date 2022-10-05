@@ -24,7 +24,8 @@ export const Login = () => {
           })
           const data = await response.json()
           if (data.status === true) {
-            navigate('/marketplace', {state: {username: formData.username}})
+            sessionStorage.setItem('username', formData.username)
+            navigate('/marketplace')
           } else {
             setInvalidLogin('invalid')
           }
@@ -55,19 +56,35 @@ export const Login = () => {
 
     return (
         <div>
-          <h4>Login:</h4>
+          <h4>Login</h4>
           <form onSubmit={handleSubmit}>
             <label>
-              Username:
-              <input type="text" required onChange={changeUsername} value={formData.username} name="username"/>
+              <input
+                type="text"
+                required onChange={changeUsername}
+                value={formData.username}
+                name="username"
+                placeholder = "username"
+                className = "formInput"
+              />
             </label>
             <p></p>
             <label>
-              Password:
-              <input type="password" required onChange={changePassword} value={formData.password} name="password"/>
+              <input
+                type="password" required
+                onChange={changePassword}
+                value={formData.password}
+                name="password"
+                placeholder = "password"
+                className = "formInput"
+              />
             </label>
             <p></p>
-            <input type="submit" value="Submit" />
+            <input
+              type="submit"
+              value="SUBMIT"
+              className="buttonStyles"
+            />
           </form>
           {invalidLogin === 'invalid' ? <p>Username and password invalid</p> : ''}
         </div>

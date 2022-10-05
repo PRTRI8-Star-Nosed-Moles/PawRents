@@ -1,21 +1,100 @@
 *{
     margin: 0;
-    background-color: white;
+}
+
+body {
+    background-color: $tan;
 }
 
 /*
 form class is div around entire form in signup
 */
+.navBar { 
+    display: grid;
+    margin-bottom: 15px;
+    padding: 5px;
+    
+    background-color: $brown;
+    border: 1px solid $brown;
+}
+
+#navLink {
+    font-family: $headerFont;
+    margin: 1em;
+    font-size: 1.5em;
+    
+}
+
+.navBar ul {
+    list-style-type: none;
+    justify-content: space-between;
+
+}
+
+.navBar ul li {
+    display: inline-block;
+}
+
+.navBar ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: $tan;
+}
+
+.navBar ul li a:hover, .navBar ul li a:after {
+    font-weight: bold;
+    color: white;
+}
+
+
+h4 {
+    margin-bottom: 8px;
+    font-family: $headerFont;
+    font-size: 2em;
+    color: $brown;
+}
+
+.formInput {
+    font-family: $bodyFont;
+    margin: .5em;
+}
+
+.buttonStyles {
+    font-family: $headerFont;
+    margin: .5em;
+}
+
+.buttonStyles input[type="text"] {
+    border: 1px black;
+    border-radius: 3px;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .signup-form {
-    font-family: $primaryFont;
+    font-family: $headerFont;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 
+.signup-form form div {
+    width: 300px;
+    margin: 5px;
+
+}  
+
+.signup-form form div input {
+    margin-left: 5px;
+    float: right;
+    position: relative;
+}
 
 #marketplace {
     max-width: 1100px;
@@ -76,7 +155,7 @@ form class is div around entire form in signup
 }
 
 .c-back {
-  background-color: #333;
+  background-color: $darkerGreen;
   color: white;
   padding: 20px;
   transform: rotateY(180deg);

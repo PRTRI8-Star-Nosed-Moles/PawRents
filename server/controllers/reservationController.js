@@ -6,11 +6,15 @@ const reservationController = {};
 reservationController.createReservation = async (req, res, next) => {
   console.log('inside reservationController.createReservation');
   try {
-    const { date, pet_id, user_id } = req.body;
-    const values = [date, pet_id, user_id];
-    const queryString = 'INSERT INTO reservation (date, pet_id, user_id) VALUES ($1, $2, $3)';
+    const { date, pet_id, user_id, username } = req.body;
+   
+    const values = [date, pet_id, user_id, username];
+    const queryString = 'INSERT INTO reservation (date, pet_id, user_id, username) VALUES ($1, $2, $3, $4)';
+    console.log("did it get to here?", req.body)
+
     const data = await db.query(queryString, values);
     res.locals.reservation = data.rows[0];
+    console.log("console logging",res.locals.reservation )
     return next();
   } catch (error) {
     return next({
@@ -24,8 +28,9 @@ reservationController.createReservation = async (req, res, next) => {
 reservationController.readUserReservation = async (req, res, next) => {
   console.log('inside reservationController.readUserReservation');
   try {
-    const { userId } = req.params;
-    const queryString = `SELECT * FROM reservation WHERE user_id='${userId}'`;
+    const username = req.params.username;
+    const values = [username]
+    const queryString = `SELECT * FROM reservation WHERE username='$1'`;
     const data = await db.query(queryString);
     res.locals.reservations = data.rows;  
     console.log('res.locals.reservations', res.locals.reservations);

@@ -7,13 +7,20 @@ export const AddPet = (props) => {
         weight: '',
         species: '',
         breed: '',
-        imgUrl: '',
+        image_url: '',
         price: '',
         bio: ''
     })
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const data = await fetch('/api/pet', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(petData)
+        })
+        const response = await data.json();
+        console.log(response);
     }
 
     const changeName = (e) => {
@@ -54,7 +61,7 @@ export const AddPet = (props) => {
     const changeImgUrl = (e) => {
         setPetData({
             ...petData,
-            imgUrl: e.target.value
+            image_url: e.target.value
         })
     }
 
@@ -129,7 +136,7 @@ export const AddPet = (props) => {
                     <input 
                         type="type"
                         name="imgurl"
-                        value={petData.imgUrl}
+                        value={petData.image_url}
                         onChange={changeImgUrl}
                     ></input>
                 </label>

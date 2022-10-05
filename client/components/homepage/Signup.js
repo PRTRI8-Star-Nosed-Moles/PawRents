@@ -95,57 +95,57 @@ export const Signup = () => {
         <div className = "signup-form">
             <h4>Signup</h4>
             <form onSubmit={handleSubmit}>
-                <label>
+                <div>
                     First Name:
                     <input
-                        type="type"
+                        type="text"
                         name="firstName"
                         value={userData.firstName}
                         onChange={changeFirstName}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
+                <div>
                     Last Name:
                     <input 
-                        type="type"
+                        type="text"
                         name="lastName"
                         value={userData.lastName}
                         onChange={changeLastName}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
+                <div>
                     Username:
                     <input 
-                        type="type"
+                        type="text"
                         name="username"
                         value={userData.username}
                         onChange={changeUsername}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
+                <div>
                     Email:
                     <input 
-                        type="type"
+                        type="text"
                         name="email"
                         value={userData.email}
                         onChange={changeEmail}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
+                <div>
                     Zip Code:
                     <input 
-                        type="type"
+                        type="text"
                         name="zipcode"
                         value={userData.zipcode}
                         onChange={changeZipcode}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
+                <div>
                     Password:
                     <input 
                         type="password"
@@ -153,10 +153,10 @@ export const Signup = () => {
                         value={userData.password}
                         onChange={changePassword}
                     ></input>
-                </label>
+                </div>
                 {userData.password !== userData.password2 ? <p style={{color: 'red'}}>Passwords must match</p> : ""}
                 <p></p>
-                <label>
+                <div>
                     Verify Password:
                     <input 
                         type="password"
@@ -164,20 +164,18 @@ export const Signup = () => {
                         value={userData.password2}
                         onChange={changePassword2}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <input type="submit" />
-
-
-
+                <div>
+                    <input className="buttonStyles" type="submit" value="SUBMIT" />
+                </div>
             </form>
-            <label>
-              
+            <div>
               <input type="checkbox"/>
               Agree to terms and conditions
-            </label>
+            </div>
 
-            <Link to="/">Login</Link>
+            {/* <Link to="/">Login</Link> */}
         </div>
     )
 }
