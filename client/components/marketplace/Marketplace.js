@@ -29,7 +29,11 @@ export const Marketplace = ({ items }) => {
 
     return ( 
         <div id='marketplace' className='cards'>
+<<<<<<< HEAD
             <h4>Marketplace</h4>
+=======
+            {/* <header>Marketplace</header> */}
+>>>>>>> 9ea6da5cc9f35213c1f2c83a220a872f227c5494
             {/* <div><PetCard/></div> */}
         <section className='cards'>
             {pets.map((pet, i) => (
