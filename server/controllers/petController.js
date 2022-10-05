@@ -81,6 +81,29 @@ petController.updatePet = async (req, res, next) => {
   }
 };
 
+//DELETE PET
+petController.deletePet = async (req, res, next) => {
+  console.log('inside petController.deletePet');
+  try {
+    const { id } = req.params;
+    const queryString = `
+      DELETE
+        FROM pet
+        WHERE _id = '${id}'
+        RETURNING *;
+    `;
+    const data = await db.query(queryString);
+    
+    res.locals.pet = data.rows[0];
+    return next();
+  } catch (error) {
+    return next({
+      log: 'Express error handler caught error in petController.deletePet',
+      message: { err: 'petController.deletePet: check server log for details' }
+    });
+  }
+};
+
 
 
 module.exports = petController;
