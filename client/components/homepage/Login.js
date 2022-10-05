@@ -24,7 +24,8 @@ export const Login = () => {
           })
           const data = await response.json()
           if (data.status === true) {
-            navigate('/marketplace', {state: {username: formData.username}})
+            sessionStorage.setItem('username', formData.username)
+            navigate('/marketplace')
           } else {
             setInvalidLogin('invalid')
           }

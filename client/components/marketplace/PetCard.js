@@ -26,6 +26,33 @@ import React from "react";
 
 export const PetCard = (props) => {
     const {item} = props;
+    const username = sessionStorage.getItem("username");
+
+    const addReservation = async (e) => {
+        e.preventDefault()
+        const date = e.target[0].value
+
+
+        const data = {
+            date: date,
+            pet_id: item._id,
+            user_id: null,
+            username: username,
+        }
+//this response doesn't work, 504 error
+console.log(data)
+        try{
+         const response = await fetch('/api/reservation', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data)
+         });
+        } catch (err){
+            console.log(err)
+        }
+    }
+    
+    
     return (
         <div className="card">
             <div className="c-inside">
@@ -40,8 +67,14 @@ export const PetCard = (props) => {
                     <li>Breed: {item.breed}</li>
                     <li>Weight: {item.weight}</li>
                     <li>Price: {item.price}</li>
-                    <button>Rent Me!</button>
+                
                 </ul>
+                <form onSubmit = {addReservation}>
+                  <label>
+                    <input type="date" name="date"/>
+                  </label>
+                  <input type="submit" value="Rent Me!"/>
+                </form>
             </div>
             </div>
         </div>
