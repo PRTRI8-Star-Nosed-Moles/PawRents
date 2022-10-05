@@ -22,8 +22,8 @@ petController.createPet = async (req, res, next) => {
   }
 }
 
-
-// get all pets to retrieve all Pets in DB
+//READ
+//get all pets to retrieve all Pets in DB
 petController.getAllPets = async (req, res, next) => {
   console.log('inside petController.getAllPets');
   try {
@@ -55,7 +55,30 @@ petController.getAPet = async (req, res, next) => {
       message: { err: 'petController.getAPet: check server log for details' }
     });
   }
+};
 
+//UPDATE PET (Currently only bio can be updated)
+petController.updatePet = async (req, res, next) => {
+  console.log('inside petController.updatePet');
+  try {
+    const { id } = req.params;
+    const { bio } = req.body;
+    const queryString = `
+      UPDATE pet 
+      SET bio = '${bio}'
+      WHERE _id = '${id}'
+      RETURNING *;
+    `;
+    const data = await db.query(queryString);
+
+    res.locals.pet = data.rows[0];
+    return next();   
+  } catch (error) {
+    return next({
+      log: 'Express error handler caught error in petController.updatePet',
+      message: { err: 'petController.updatePet: check server log for details' }
+    });
+  }
 };
 
 
