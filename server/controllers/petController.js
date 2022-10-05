@@ -40,6 +40,22 @@ petController.getAllPets = async (req, res, next) => {
   }
 }
 
+petController.addPetOwner = async (req, res, next) => {
+  console.log(res.locals.pet._id)
+  const petId = res.locals.pet._id;
+  console.log(req.params.username)
+  const {username} = req.params
+  const queryString = 'INSERT INTO user_pet (pet_id, username) VALUES ($1, $2) RETURNING *'
+  const values = [petId, username]
+  try {
+    const query = await db.query(queryString, values);
+    console.log(query)
+    return next()
+  } catch(err) {
+    console.log(err)
+  }
+}
+
 // get a pet
 petController.getAPet = async (req, res, next) => {
   console.log('inside petController.getAPet');
@@ -56,6 +72,23 @@ petController.getAPet = async (req, res, next) => {
     });
   }
 };
+
+petController.getMyPets = async (req, res, next) => {
+  const {username} = req.params
+  const values = [username]
+  const queryString = `SELECT *
+  FROM user_pet
+  JOIN pet
+  ON user_pet.pet_id = pet._id
+  WHERE username = $1`
+  try {
+    const query = await db.query(queryString, values)
+    res.locals.myPets = query.rows
+    return next()
+  } catch(err) {
+    console.log(err)
+  }
+}
 
 //UPDATE PET (Currently only bio can be updated)
 petController.updatePet = async (req, res, next) => {
