@@ -1,10 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@700&family=Martel&display=swap');
+
 $p0: 0.5em;
 $p1: 1em;
 $lightBorder: 1px solid #e4e4e4;
 $plainShadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2);
 $highShadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-$lightGray: #f6f6f6;
-$primary: #00beff;
-$secondary: #1289b2;
-$primaryFont: Arial, Helvetica, sans-serif;
-$secondaryFont: 'Times New Roman', Times, serif;
+$background:  rgb(190, 220, 199);
+$brown: rgb(120, 96, 92);
+$orange:  rgb(213, 135, 82);
+$lightOrange:  rgb(224, 188, 137);
+$tan:  rgb(230, 221, 194);
+$darkerGreen:  rgb(137, 179, 151);
+
+
+$headerFont:'Karla', sans-serif;
+$bodyFont: 'Martel', serif;
+$buttonFont:'Karla', sans-serif;

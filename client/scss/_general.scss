@@ -6,14 +6,47 @@
 /*
 form class is div around entire form in signup
 */
+.navBar { 
+    background-color: $brown;
+    display: grid;
+    border: 1px solid black;
+}
+
+#navLink {
+    font-family: $headerFont;
+    margin: 1em;
+    font-size: 1.5em;
+    
+}
+
+h4 {
+    font-family: $headerFont;
+    font-size: 2em;
+}
+
+.formInput {
+    font-family: $bodyFont;
+    margin: .5em;
+}
+
+.buttonStyles {
+    font-family: $headerFont;
+    margin: .5em;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .signup-form {
-    font-family: $primaryFont;
+    font-family: $headerFont;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 
 
