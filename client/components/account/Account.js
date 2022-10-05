@@ -1,47 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AddPet } from "./AddPet";
 import { RentalHistory } from "./RentalHistory";
 import { useLocation } from "react-router-dom";
-import { MyPets } from "./MyPets";
 
 export const Account = () => {
     const location = useLocation();
     // const username = sessionStorage.getItem('username');
 
-    console.log(sessionStorage.getItem('username'));
-    const username = sessionStorage.getItem('username')
+    console.log(sessionStorage.getItem('username'))
 
-    const [petAdd, setPetAdd] = useState(false);
-
-    const [myPets, setMyPets] = useState([]);
-
-    const fetchMyPets = async () => {
-        const data = await fetch(`/api/pet/mypets/${username}`, {
-            method: "GET"
-        })
-        const response = await data.json()
-        setMyPets(response)
-        console.log(response)
-    }
+    const [petAdd, setPetAdd] = useState(false)
 
     const changeAdd = () => {
         petAdd === false ? setPetAdd(true) : setPetAdd(false)
     }
-
-    useEffect(() => {
-        fetchMyPets()
-    }, [])
-
     return (
         <div>
           <h1>Account</h1>
           {petAdd === false ? '' : <AddPet/>}
-          <div>
-            <h4>My pets</h4>
-            {myPets.map((pet, i) => <MyPets key={i} pet={pet}/>)}
-          </div>
           <button onClick={changeAdd}>Add Pet</button>
-          <RentalHistory />
+          <div id="account-history">
+            <RentalHistory />
+          </div>
         </div>
     )
 }

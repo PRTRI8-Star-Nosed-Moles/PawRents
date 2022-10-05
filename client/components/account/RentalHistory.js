@@ -24,7 +24,7 @@ export const RentalHistory = () =>{
     return(
         <div>
             {rentalHistory.map((history, i) => <HistoryCard key={i} obj={history}/>)}
-            <h1>Your Pet's Rental History</h1>
+            <h5>Your Pet's Rental History</h5>
             <ul>
                 <li>transaction ID</li>
                 <li>date</li>
@@ -32,7 +32,7 @@ export const RentalHistory = () =>{
                 <li>date</li>
             </ul>
 
-            <h1>Pet's you've rented</h1>
+            <h5>Pets you've rented</h5>
             <ul>
                 <li>transaction ID</li>
                 <li>date</li>
