@@ -4,15 +4,22 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
 
     return (
-      
-          <div className='header'>
+          <div className = "navBar">
+
+            <div id = 'navLeft'>
               <ul>
-                <Link to="/" >Logo-Home</Link>
-                <Link to="/Marketplace" >Marketplace</Link>
-                <Link to="/Account" >Account</Link>
+                <Link to="/" id= "navLink">Home</Link>
               </ul>
+            </div>
+
+            <div id = "navRight">
+              <ul>
+                <Link to="/Marketplace" id= "navLink">Marketplace</Link>
+                <Link to="/Account" id= "navLink">Account</Link>
+              </ul>
+            </div>
+
           </div>
-     
     )
   }
   
