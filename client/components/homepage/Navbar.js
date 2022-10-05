@@ -5,20 +5,17 @@ export const Navbar = () => {
 
     return (
           <div className = "navBar">
-
-            <div id = 'navLeft'>
-              <ul>
+            <ul>
+              <li>
                 <Link to="/" id= "navLink">Home</Link>
-              </ul>
-            </div>
-
-            <div id = "navRight">
-              <ul>
+              </li>
+              <li>
                 <Link to="/Marketplace" id= "navLink">Marketplace</Link>
+              </li>
+              <li>
                 <Link to="/Account" id= "navLink">Account</Link>
-              </ul>
-            </div>
-
+              </li>
+            </ul>
           </div>
     )
   }

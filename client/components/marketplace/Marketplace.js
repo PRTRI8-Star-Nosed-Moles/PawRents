@@ -24,7 +24,7 @@ export const Marketplace = ({ items }) => {
 
     return ( 
         <div id='marketplace' className='cards'>
-            <header>Marketplace</header>
+            {/* <header>Marketplace</header> */}
             {/* <div><PetCard/></div> */}
         <section className='cards'>
             {pets.map((pet, i) => (
