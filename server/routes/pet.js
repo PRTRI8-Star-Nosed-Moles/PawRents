@@ -2,12 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 const petController = require('../controllers/petController.js');
-const { route } = require('./login.js');
 
 // create pet
-router.post('/', petController.createPet, (req, res) => {
+router.post('/:username', petController.createPet, petController.addPetOwner, (req, res) => {
   return res.status(200).json(res.locals.pet);
 });
+
+router.get('/mypets/:username', petController.getMyPets, (req, res) => {
+  return res.status(200).json(res.locals.myPets)
+})
 
 // get ALL pets
 router.get('/', petController.getAllPets, (req, res) => {
