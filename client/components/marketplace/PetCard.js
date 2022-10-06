@@ -37,8 +37,6 @@ export const PetCard = (props) => {
             pet_id: item._id,
             username: username,
         }
-//this response doesn't work, 504 error
-console.log(data)
         try{
          const response = await fetch('/api/reservation', {
             method: "POST",

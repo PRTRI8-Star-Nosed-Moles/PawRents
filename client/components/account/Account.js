@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { AddPet } from "./AddPet";
 import { RentalHistory } from "./RentalHistory";
 import { useLocation } from "react-router-dom";
+import { PetsRented } from "./PetsRented";
+
 
 export const Account = () => {
     const location = useLocation();
@@ -20,6 +22,7 @@ export const Account = () => {
           {petAdd === false ? '' : <AddPet/>}
           <button onClick={changeAdd}>Add Pet</button>
           <RentalHistory />
+          <PetsRented />
         </div>
     )
 }

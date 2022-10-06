@@ -30,11 +30,15 @@ reservationController.readUserReservation = async (req, res, next) => {
   console.log('inside reservationController.readUserReservation');
   try {
     const username = req.params.username;
+    console.log('username in server is: ', username)
     const values = [username]
-    const queryString = `SELECT * FROM reservation WHERE username='$1'`;
-    const data = await db.query(queryString);
+    console.log("values", values)
+
+    const queryString = `SELECT * FROM reservation WHERE username=$1`;
+
+    const data = await db.query(queryString,values);
+
     res.locals.reservations = data.rows;  
-    console.log('res.locals.reservations', res.locals.reservations);
     return next();
   } catch (error) {
     return next({
