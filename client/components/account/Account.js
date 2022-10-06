@@ -21,8 +21,14 @@ export const Account = () => {
           <h1>Account</h1>
           {petAdd === false ? '' : <AddPet/>}
           <button onClick={changeAdd}>Add Pet</button>
+<<<<<<< HEAD
           <RentalHistory />
           <PetsRented />
+=======
+          <div id="account-history">
+            <RentalHistory />
+          </div>
+>>>>>>> 067f285b73c552af8b91751f57592046b6abc164
         </div>
     )
 }

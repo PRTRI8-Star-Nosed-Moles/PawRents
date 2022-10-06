@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 export const AddPet = (props) => {
+    const username = sessionStorage.getItem('username')
     const [petData, setPetData] = useState({
         name: '',
         age: '',
@@ -13,8 +14,9 @@ export const AddPet = (props) => {
     })
 
     const handleSubmit = async (e) => {
+        console.log(username)
         e.preventDefault();
-        const data = await fetch('/api/pet', {
+        const data = await fetch(`/api/pet/${username}`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(petData)

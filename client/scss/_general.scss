@@ -1,9 +1,20 @@
-*{
+* {
     margin: 0;
+}
+
+html {
+    background-color: $tan;
+    text-transform: lowercase;
 }
 
 body {
     background-color: $tan;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    height: 100%;
 }
 
 /*
@@ -11,9 +22,7 @@ form class is div around entire form in signup
 */
 .navBar { 
     display: grid;
-    margin-bottom: 15px;
-    padding: 5px;
-    
+    padding: 8px 5px 10px 5px;
     background-color: $brown;
     border: 1px solid $brown;
 }
@@ -22,13 +31,11 @@ form class is div around entire form in signup
     font-family: $headerFont;
     margin: 1em;
     font-size: 1.5em;
-    
 }
 
 .navBar ul {
     list-style-type: none;
     justify-content: space-between;
-
 }
 
 .navBar ul li {
@@ -43,37 +50,114 @@ form class is div around entire form in signup
 
 .navBar ul li a:hover, .navBar ul li a:after {
     font-weight: bold;
+    border-bottom-style: double;
+    border-color: white;
     color: white;
 }
 
 
 h4 {
-    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-bottom: 15px;
     font-family: $headerFont;
     font-size: 2em;
     color: $brown;
+    text-align: center;
+}
+
+h5 {
+    margin-bottom: 8px;
+    font-family: $headerFont;
+    font-size: 1.5em;
+    color: $orange;
+    text-align: center;
 }
 
 .formInput {
     font-family: $bodyFont;
     margin: .5em;
+    border-radius: 6px;
+    padding: 4px;
 }
 
 .buttonStyles {
     font-family: $headerFont;
+    font-size: 16px;
     margin: .5em;
-}
-
-.buttonStyles input[type="text"] {
-    border: 1px black;
-    border-radius: 3px;
-}
-
-.loginForm {
+    justify-content: center;
+    align-items: center;
+    background-color: $orange;
+    border: 2px solid $brown;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: $tan;
+    cursor: pointer;
     display: flex;
+    font-family: Inter,sans-serif;
+    font-size: 16px;
+    height: 36px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.buttonStyles:after {
+    background-color: $brown;
+    border-radius: 8px;
+    content: "";
+    display: block;
+    height: 36px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    top: -2px;
+    transform: translate(5px, 5px);
+    transition: transform .2s ease-out;
+    z-index: -1;
+}
+
+.buttonStyles:hover:after {
+    transform: translate(0, 0);
+}
+
+.buttonStyles:active {
+    background-color: $lightOrange;
+    outline: 0;
+}
+
+.buttonStyles:hover {
+    outline: 0;
+}
+
+.splashContainer {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 10vw;
+    background-image: url("https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.loginForm, #account {
+    margin-top: 15px;
+    display: flex;
+    padding: 20px;
     flex-direction: column;
     align-items: center;
+    width: 400px;
     justify-content: center;
+    border: 4px solid $brown;
+    border-radius: 10px;
+    background-color: $tanOpacity;
 }
 
 .signup-form {
@@ -82,12 +166,12 @@ h4 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: left;
 }
 
 .signup-form form div {
     width: 300px;
     margin: 5px;
-
 }  
 
 .signup-form form div input {
@@ -96,18 +180,22 @@ h4 {
     position: relative;
 }
 
+.signup-form form div input[type="checkbox"] {
+    padding: 5px;
+}
+
 #marketplace {
     max-width: 1100px;
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
     display: grid;
+    margin: 155px;
 }
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 2rem;
   }
 
 .card {
@@ -116,25 +204,28 @@ h4 {
     background-color: transparent;
     height: 300px;
     width: 200px;
-    perspective: 1000px; 
+    perspective: 1000px;
 }
 
 .card h5 {
     font-size: 25px;
     border-bottom: 1px #fff solid;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
     color: black;
 }
 
 .card img {
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
 }
 
 .c-inside {
     position: relative;
+    border: 2px rgba(0, 0, 0, 0.449) solid;
+    border-radius: 5px;
+    box-shadow: 0 4px 2px -2px gray;
     width: 100%;
     height: 100%;
     transition: transform 0.8s;
@@ -157,12 +248,34 @@ h4 {
 .c-back {
   background-color: $darkerGreen;
   color: white;
-  padding: 20px;
+  padding: 0px;
   transform: rotateY(180deg);
 }
 
+.card ul {
+    padding-top: 15px;
+}
 .card li {
     list-style: none;
     padding-bottom: 10px;
     color: black;
+    font-size: 14px;
+    font-family: $bodyFont;
+}
+
+#rentmebtn {
+    text-align: center;
+    transition-duration: 0.4s;
+}
+
+#rentmebtn:hover{
+    background-color: $lightOrange;
+    color:black;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
 }
