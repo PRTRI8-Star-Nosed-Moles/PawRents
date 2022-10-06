@@ -56,26 +56,30 @@ console.log(data)
     return (
         <div className="card">
             <div className="c-inside">
-            <div className="c-front">
-                <img src={item.image_url} />
-            </div>
-            <div className="c-back">
-                <h5>{item.name}</h5>
-                <ul>
-                    <li>Bio: {item.bio}</li>
-                    <li>Age: {item.age}</li>
-                    <li>Breed: {item.breed}</li>
-                    <li>Weight: {item.weight}</li>
-                    <li>Price: {item.price}</li>
+                <div className="c-front">
+                    <img src={item.image_url} />
+                </div>
+                <div className="c-back">
+                    <h5>{item.name}</h5>
+                    <ul>
+                        <li>Bio: {item.bio}</li>
+                        <li>Age: {item.age}</li>
+                        <li>Breed: {item.breed}</li>
+                        <li>Weight: {item.weight}</li>
+                        <li>Price: {item.price}</li>
                 
-                </ul>
-                <form onSubmit = {addReservation}>
-                  <label>
-                    <input type="date" name="date"/>
-                  </label>
-                  <input type="submit" value="Rent Me!"/>
-                </form>
-            </div>
+                    </ul>
+                    <form onSubmit = {addReservation}>
+                    <div className="center">
+                        <label id="reslabel">
+                            <input type="date" name="date"/>
+                        </label>
+                    </div>
+                    <div className="center">
+                        <input id="rentmebtn" type="submit" value="Rent Me!"/>
+                    </div>
+                    </form>
+                </div>
             </div>
         </div>
     )

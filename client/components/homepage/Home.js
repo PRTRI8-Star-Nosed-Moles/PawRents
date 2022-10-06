@@ -20,7 +20,7 @@ export const Home = () => {
             className = "buttonStyles"
             onClick={condition}
           >
-            {loginSignup === 'login' ? 'SIGN UP' : 'LOGIN'}
+            {loginSignup === 'login' ? 'sign up' : 'log in'}
           </button>
         </div>
          
