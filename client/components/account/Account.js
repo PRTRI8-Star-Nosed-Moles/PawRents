@@ -15,10 +15,9 @@ export const Account = () => {
         petAdd === false ? setPetAdd(true) : setPetAdd(false)
     }
     return (
-        <div id="account">
-          <div id="account-pet">
-            {petAdd === false ? '' : <AddPet/>}
-          </div>
+        <div>
+          <h1>Account</h1>
+          {petAdd === false ? '' : <AddPet/>}
           <button onClick={changeAdd}>Add Pet</button>
           <div id="account-history">
             <RentalHistory />

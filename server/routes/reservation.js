@@ -14,7 +14,7 @@ router.get('/user/:username', reservationController.readUserReservation, (req, r
 });
 
 // read - pet rental history
-router.get('/pet/:petId', (req, res) => {
+router.get('/pet/:petId', reservationController.readPetReservation, (req, res) => {
   return res.status(200).json(res.locals.reservations);
 });
 

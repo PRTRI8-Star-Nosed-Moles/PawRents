@@ -46,12 +46,14 @@ reservationController.readUserReservation = async (req, res, next) => {
 
 //READ - for pet
 reservationController.readPetReservation = async (req, res, next) => {
-  console.log('inside reservationController.readPetReservation');
+  // console.log('inside reservationController.readPetReservation');
+  console.log('PET RESERVATIONS')
   try {
     const { petId }  = req.params;
-    const queryString = `SELECT * FROM reservation WHERE user_id='${petId}'`;
+    const queryString = `SELECT * FROM reservation WHERE pet_id='${petId}'`;
     const data = await db.query(queryString);
     res.locals.reservations = data.rows;  
+    console.log(data.rows)
     return next();
   } catch (error) {
     return next({
