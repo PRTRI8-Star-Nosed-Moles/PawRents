@@ -55,7 +55,7 @@ export const Login = () => {
     }
 
     return (
-        <div>
+        <div id="login">
           <h4>Login</h4>
           <form onSubmit={handleSubmit}>
             <label>
@@ -80,11 +80,7 @@ export const Login = () => {
               />
             </label>
             <p></p>
-            <input
-              type="submit"
-              value="SUBMIT"
-              className="buttonStyles"
-            />
+            <button type="submit" className="buttonStyles">log in</button>
           </form>
           {invalidLogin === 'invalid' ? <p>Username and password invalid</p> : ''}
         </div>

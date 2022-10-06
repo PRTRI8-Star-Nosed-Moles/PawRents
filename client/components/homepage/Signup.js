@@ -30,6 +30,7 @@ export const Signup = () => {
             navigate('/marketplace', {state: {username: response.username}})
         } catch(err) {
             console.log(err)
+            alert('Please fill out the required fields.');
         }
         setNewUser({
             firstName: '',
@@ -92,89 +93,91 @@ export const Signup = () => {
     }
 
     return (
-        <div className = "signup-form">
-            <h4>Signup</h4>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    First Name:
-                    <input
-                        type="text"
-                        name="firstName"
-                        value={userData.firstName}
-                        onChange={changeFirstName}
-                    ></input>
-                </div>
-                <p></p>
-                <div>
-                    Last Name:
-                    <input 
-                        type="text"
-                        name="lastName"
-                        value={userData.lastName}
-                        onChange={changeLastName}
-                    ></input>
-                </div>
-                <p></p>
-                <div>
-                    Username:
-                    <input 
-                        type="text"
-                        name="username"
-                        value={userData.username}
-                        onChange={changeUsername}
-                    ></input>
-                </div>
-                <p></p>
-                <div>
-                    Email:
-                    <input 
-                        type="text"
-                        name="email"
-                        value={userData.email}
-                        onChange={changeEmail}
-                    ></input>
-                </div>
-                <p></p>
-                <div>
-                    Zip Code:
-                    <input 
-                        type="text"
-                        name="zipcode"
-                        value={userData.zipcode}
-                        onChange={changeZipcode}
-                    ></input>
-                </div>
-                <p></p>
-                <div>
-                    Password:
-                    <input 
-                        type="password"
-                        name="password"
-                        value={userData.password}
-                        onChange={changePassword}
-                    ></input>
-                </div>
-                {userData.password !== userData.password2 ? <p style={{color: 'red'}}>Passwords must match</p> : ""}
-                <p></p>
-                <div>
-                    Verify Password:
-                    <input 
-                        type="password"
-                        name="password2"
-                        value={userData.password2}
-                        onChange={changePassword2}
-                    ></input>
-                </div>
-                <p></p>
-                <div>
-                    <input className="buttonStyles" type="submit" value="SUBMIT" />
-                </div>
-            </form>
-            <div>
-              <input type="checkbox"/>
-              Agree to terms and conditions
+        <div>
+            <div className = "signup-form">
+                <h4>Signup</h4>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        First Name:
+                        <input
+                            type="text"
+                            name="firstName"
+                            value={userData.firstName}
+                            onChange={changeFirstName}
+                        ></input>
+                    </div>
+                    <p></p>
+                    <div>
+                        Last Name:
+                        <input 
+                            type="text"
+                            name="lastName"
+                            value={userData.lastName}
+                            onChange={changeLastName}
+                        ></input>
+                    </div>
+                    <p></p>
+                    <div>
+                        Username:
+                        <input 
+                            type="text"
+                            name="username"
+                            value={userData.username}
+                            onChange={changeUsername}
+                        ></input>
+                    </div>
+                    <p></p>
+                    <div>
+                        Email:
+                        <input 
+                            type="text"
+                            name="email"
+                            value={userData.email}
+                            onChange={changeEmail}
+                        ></input>
+                    </div>
+                    <p></p>
+                    <div>
+                        Zip Code:
+                        <input 
+                            type="text"
+                            name="zipcode"
+                            value={userData.zipcode}
+                            onChange={changeZipcode}
+                        ></input>
+                    </div>
+                    <p></p>
+                    <div>
+                        Password:
+                        <input 
+                            type="password"
+                            name="password"
+                            value={userData.password}
+                            onChange={changePassword}
+                        ></input>
+                    </div>
+                    {userData.password !== userData.password2 ? <p style={{color: 'red'}}>Passwords must match</p> : ""}
+                    <p></p>
+                    <div>
+                        Verify Password:
+                        <input 
+                            type="password"
+                            name="password2"
+                            value={userData.password2}
+                            onChange={changePassword2}
+                        ></input>
+                    </div>
+                    <p></p>
+                    <div id="terms-checkbox">
+                        <input type="checkbox"/>
+                        <p>Agree to terms and conditions</p>
+                    </div>
+                    <p></p>
+                </form>
             </div>
-
+            <div>
+                <button className="buttonStyles" type="submit">sign up</button>
+            </div>
             {/* <Link to="/">Login</Link> */}
         </div>
     )
