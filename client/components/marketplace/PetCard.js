@@ -32,11 +32,9 @@ export const PetCard = (props) => {
         e.preventDefault()
         const date = e.target[0].value
 
-
         const data = {
             date: date,
             pet_id: item._id,
-            user_id: null,
             username: username,
         }
 //this response doesn't work, 504 error

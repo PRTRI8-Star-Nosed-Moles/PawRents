@@ -12,17 +12,18 @@ export const Home = () => {
     loginSignup === 'login' ? setLoginSignup('signup') : setLoginSignup('login')
   }
  
-    return (
-        <div className = "loginForm"> 
-          {loginSignup === 'login' ? <Login /> : <Signup />}
-          
-          <button
-            className = "buttonStyles"
-            onClick={condition}
-          >
+    return (         
+        <div className = "splashContainer">
+          <div className = "loginForm"> 
+            {loginSignup === 'login' ? <Login /> : <Signup />}
+            
+            <button
+              className = "buttonStyles"
+              onClick={condition}
+            >
             {loginSignup === 'login' ? 'sign up' : 'log in'}
-          </button>
-        </div>
-         
+            </button>
+          </div>
+        </div>     
     )
 }

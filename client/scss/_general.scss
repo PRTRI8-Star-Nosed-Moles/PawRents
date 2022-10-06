@@ -67,6 +67,8 @@ h5 {
 .formInput {
     font-family: $bodyFont;
     margin: .5em;
+    border-radius: 6px;
+    padding: 4px;
 }
 
 .buttonStyles {
@@ -129,15 +131,15 @@ h5 {
 .loginForm, #account {
     margin-top: 15px;
     display: flex;
+    padding: 20px;
     flex-direction: column;
     align-items: center;
+    width: 400px;
+    // padding-left: 20vh;
     justify-content: center;
-    text-align: center;
-}
-
-.login {
-    align-items: center;
-    justify-content: center;
+    border: 4px solid $brown;
+    border-radius: 10px;
+    background-color: $tanOpacity;
 }
 
 .signup-form {
