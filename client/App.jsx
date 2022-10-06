@@ -12,7 +12,7 @@ import { Account } from './components/account/Account';
 function App () {
     // <Link path="/users">click here for users</Link>
     return (
-        <div>
+        <>
             <Navbar/>
             <Routes>
                 <Route path="/" element={<Home />}></Route>
@@ -21,7 +21,7 @@ function App () {
                 <Route path="/account" element={<Account/>}></Route>
                 {/* <Route>add route here</Route> */}
             </Routes>
-        </div>
+        </>
 
     );
 }

@@ -13,16 +13,17 @@ export const Home = () => {
   }
  
     return (
-        <div className = "loginForm"> 
-          {loginSignup === 'login' ? <Login /> : <Signup />}
-          
-          <button
-            className = "buttonStyles"
-            onClick={condition}
-          >
-            {loginSignup === 'login' ? 'SIGN UP' : 'LOGIN'}
-          </button>
-        </div>
-         
+        <div className = "splashContainer">
+          <div className = "loginForm"> 
+            {loginSignup === 'login' ? <Login /> : <Signup />}
+            
+            <button
+              className = "buttonStyles"
+              onClick={condition}
+            >
+              {loginSignup === 'login' ? 'SIGN UP' : 'LOGIN'}
+            </button>
+          </div>
+        </div>     
     )
 }
