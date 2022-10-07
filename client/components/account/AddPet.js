@@ -82,18 +82,18 @@ export const AddPet = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-                <label>
-                    Name:
+        <form id="addPetForm" onSubmit={handleSubmit}>
+                <div>
+                    Pet Name:
                     <input
                         type="type"
                         name="firstName"
                         value={petData.name}
                         onChange={changeName}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
+                <div>
                     Age:
                     <input 
                         type="type"
@@ -101,19 +101,19 @@ export const AddPet = (props) => {
                         value={petData.age}
                         onChange={changeAge}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
-                    Weight:
+                <div>
+                    Weight (lbs):
                     <input 
                         type="type"
                         name="weight"
                         value={petData.weight}
                         onChange={changeWeight}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
+                <div>
                     Species:
                     <input 
                         type="type"
@@ -121,9 +121,9 @@ export const AddPet = (props) => {
                         value={petData.species}
                         onChange={changeSpecies}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
+                <div>
                     Breed:
                     <input 
                         type="type"
@@ -131,9 +131,9 @@ export const AddPet = (props) => {
                         value={petData.breed}
                         onChange={changeBreed}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
+                <div>
                     Image Url:
                     <input 
                         type="type"
@@ -141,18 +141,18 @@ export const AddPet = (props) => {
                         value={petData.image_url}
                         onChange={changeImgUrl}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <label>
-                    Price:
+                <div>
+                    Rental Price (per day):
                     <input 
                         type="type"
                         name="price"
                         value={petData.price}
                         onChange={changePrice}
                     ></input>
-                </label>
-                <label>
+                </div>
+                <div>
                     Bio:
                     <input 
                         type="type"
@@ -160,12 +160,9 @@ export const AddPet = (props) => {
                         value={petData.bio}
                         onChange={changeBio}
                     ></input>
-                </label>
+                </div>
                 <p></p>
-                <input type="submit" className="buttonStyles"/>
-
-
-
+                <button type="submit" className="buttonStyles"/>
             </form>
     )
 }

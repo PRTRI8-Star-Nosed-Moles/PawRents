@@ -26,18 +26,49 @@ petController.createPet = async (req, res, next) => {
 //get all pets to retrieve all Pets in DB
 petController.getAllPets = async (req, res, next) => {
   console.log('inside petController.getAllPets');
-  try {
-    const queryString = 'SELECT * FROM pet';
-    const data = await db.query(queryString);
+  if (req.params.name === '') {
+    try {
+      const queryString = 'SELECT * FROM pet';
+      const data = await db.query(queryString);
+      res.locals.pets = data.rows;
+      return next()
+    } catch(err) {
+      return next({
+        log: 'Express error handler caught error in petController.getAllPets',
+        message: { err: 'petController.getAllPets: check server log for details' }
+      });
+    }
+  } else {
+    try {
+      const values = [req.params.name]
+      const queryString = `SELECT * FROM pet WHERE name ILIKE '%$1%'`
+      const data = await db.query(queryString, values);
+      res.locals.pets = data.rows;
+      return next();
+    } catch (error) {
+      return next({
+        log: 'Express error handler caught error in petController.getAllPets',
+        message: { err: 'petController.getAllPets: check server log for details' }
+      });
+    }
+  }
+}
 
+petController.getByDate = async (req, res, next) => {
+  const date = req.params.date
+  const values = date
+  const queryString = 'SELECT * FROM pet WHERE _id NOT IN (SELECT pet_id FROM reservation WHERE date = $1'
+  try {
+    const data = await db.query(queryString, values);
     res.locals.pets = data.rows;
-    return next();
-  } catch (error) {
+    return next()
+  } catch(err) {
     return next({
       log: 'Express error handler caught error in petController.getAllPets',
       message: { err: 'petController.getAllPets: check server log for details' }
     });
   }
+  next()
 }
 
 petController.addPetOwner = async (req, res, next) => {

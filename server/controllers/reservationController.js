@@ -30,9 +30,8 @@ reservationController.readUserReservation = async (req, res, next) => {
   console.log('inside reservationController.readUserReservation');
   try {
     const username = req.params.username;
-    console.log('username in server is: ', username)
     const values = [username]
-    console.log("values", values)
+    
 
     const queryString = `SELECT * FROM reservation WHERE username=$1`;
 
