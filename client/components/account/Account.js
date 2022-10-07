@@ -6,7 +6,6 @@ import { YourUserRentalHistory } from "./YourUserRentalHistory";
 import { MyPets } from "./MyPets"
 
 
-
 export const Account = () => {
     const navigate = useNavigate();
     // const username = sessionStorage.getItem('username');
@@ -65,12 +64,20 @@ export const Account = () => {
 
     return (
         <div className="account-container">
-          <h4>Account for {username}</h4>
-
+          <h4>{username}</h4>
           <h5>My pets</h5>
+<<<<<<< HEAD
           {myPets.length ? myPets.map((pet, i) => <MyPets fetch={fetchPets} key={i} obj={pet}/>) : <p>You have no pets, sad face</p>}
           {petAdd === false ? '' : <AddPet fetch={fetchPets}/>}
           <button onClick={changeAdd} className="buttonStyles">Add Pet</button>
+=======
+
+          <div id="pets-display">
+            {myPets.map((pet, i) => <MyPets key={i} obj={pet}/>)}
+          </div>
+          {petAdd === false ? '' : <AddPet/>}
+          <button onClick={changeAdd} className="buttonStyles">add pet</button>
+>>>>>>> dev
           
           <div id="account-history">
             {/* <YourPetRentalHistory /> */}

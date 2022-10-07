@@ -39,6 +39,7 @@ export const Marketplace = () => {
         setSearchByDate(e.target.value)
     }
     
+<<<<<<< HEAD
     //function to get all pets with no filter
     // const fetchPets = async () => {
     //   try {
@@ -53,6 +54,23 @@ export const Marketplace = () => {
     //     console.log(err)
     //   }
     // } 
+=======
+    const fetchPets = async () => {
+      console.log('inside fetchPets');
+      console.log('searchString --> ', searchString);
+      try {
+        // const response = await fetch(`/api/pet/${searchString}`, {
+        const response = await fetch(`/api/pet/${searchString}`, {
+            method: "GET"
+        })
+        const data = await response.json();
+        console.log('fetchPets data -->', data)
+        setPets(data)
+      } catch(err) {
+        console.log(err)
+      }
+    } 
+>>>>>>> dev
 
     //form for choosing date
     const handleSubmit = (e) => {
@@ -88,8 +106,7 @@ export const Marketplace = () => {
         fetchByDate()
     }, [])
 
-    return ( 
-
+    return (
         <div id='marketplace'>
             <label>
                 Search by name:
@@ -109,8 +126,6 @@ export const Marketplace = () => {
             ))}
             </section>
         </div>
-            
- 
     )
 }
 

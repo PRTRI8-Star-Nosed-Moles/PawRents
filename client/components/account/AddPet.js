@@ -12,6 +12,7 @@ export const AddPet = (props) => {
         price: '',
         bio: ''
     })
+    const [petAdd, setPetAdd] = useState(false)
 
     const handleSubmit = async (e) => {
         console.log(username)
@@ -81,6 +82,10 @@ export const AddPet = (props) => {
             ...petData,
             bio: e.target.value
         })
+    }
+
+    const changeAdd = () => {
+        petAdd === false ? setPetAdd(true) : setPetAdd(false)
     }
 
     return (
@@ -164,7 +169,11 @@ export const AddPet = (props) => {
                     ></input>
                 </div>
                 <p></p>
+<<<<<<< HEAD
                 <input type="submit" className="buttonStyles"/>
+=======
+                <button type="submit" className="buttonStyles" onClick={changeAdd}>add pet</button>
+>>>>>>> dev
             </form>
     )
 }
