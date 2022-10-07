@@ -31,6 +31,7 @@ export const Marketplace = ({ items }) => {
     return ( 
 
         <div id='marketplace'>
+          <div className='searchbar'> <Search/> </div>
             <section className='cards'>
             {pets.map((pet, i) => (
                 <PetCard key={i} item={pet}></PetCard>

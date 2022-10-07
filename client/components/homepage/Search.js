@@ -14,8 +14,8 @@ export const Search = ({ getQuery}) => {
                 <input
                 type='text'
                 placeholder='Search pets...'
-                value={text}
-                onChange={setText}
+                value=''
+                onChange=''
                 />
             </form>
         </section>
