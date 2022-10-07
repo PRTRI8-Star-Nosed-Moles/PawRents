@@ -27,10 +27,10 @@ export const MyPets = (props) => {
         <div>
         
           <div className="account-pet-card">
-            <div className="account-pet-detail">Name:<span className="account-pet-detail-value">{props.obj.name}</span></div>
-            <div className="account-pet-detail">Age:<span className="account-pet-detail-value">{props.obj.age}</span></div>
-            <div className="account-pet-detail">Current Listed Price:<span className="account-pet-detail-value">{props.obj.price}</span></div>
-            <div className="account-pet-detail">Bio:<span className="account-pet-detail-value">{props.obj.bio}</span></div>
+            <div className="account-pet-detail">Name:<span>{props.obj.name}</span></div>
+            <div className="account-pet-detail">Age:<span>{props.obj.age}</span></div>
+            <div className="account-pet-detail">Current Listed Price:<span>{props.obj.price}</span></div>
+            <div className="account-pet-detail">Bio:<span>{props.obj.bio}</span></div>
           </div>
           <div>
            
