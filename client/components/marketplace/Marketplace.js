@@ -24,12 +24,15 @@ export const Marketplace = ({ items }) => {
     }
     
     const fetchPets = async () => {
+      console.log('inside fetchPets');
+      console.log('searchString --> ', searchString);
       try {
+        // const response = await fetch(`/api/pet/${searchString}`, {
         const response = await fetch(`/api/pet/${searchString}`, {
             method: "GET"
         })
         const data = await response.json();
-        console.log(data)
+        console.log('fetchPets data -->', data)
         setPets(data)
       } catch(err) {
         console.log(err)
@@ -53,8 +56,7 @@ export const Marketplace = ({ items }) => {
         fetchPets()
     }, [])
 
-    return ( 
-
+    return (
         <div id='marketplace'>
           <div className='searchbar'> <Search/> </div>
             <section className='cards'>
@@ -63,8 +65,6 @@ export const Marketplace = ({ items }) => {
             ))}
             </section>
         </div>
-            
- 
     )
 }
 

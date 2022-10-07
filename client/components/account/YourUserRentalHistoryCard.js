@@ -15,11 +15,9 @@ export const YourUserRentalHistoryCard = (props) => {
     const year = resDate.getFullYear()
 
     return (
-        <div className="account-pet-card" >
-            <ul>
-                <li>Date: {month + '/'+day + '/' + year}</li>
-                <li>You are renting: {pet_id}</li>
-            </ul>         
+        <div className="account-rental-card" >
+            <p>Date: {month + '/'+day + '/' + year}</p>
+            <p>You are renting: {pet_id}</p>
         </div>
     )
 }

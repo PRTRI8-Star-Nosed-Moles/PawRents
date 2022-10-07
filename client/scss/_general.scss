@@ -1,10 +1,10 @@
 * {
     margin: 0;
+    text-transform: lowercase;
 }
 
 html {
     background-color: $tan;
-    text-transform: lowercase;
 }
 
 body {
@@ -15,6 +15,7 @@ body {
 
 .app-container {
     height: 100%;
+    overflow:auto
 }
 
 /*
@@ -66,7 +67,6 @@ h4 {
 }
 
 h5 {
-    margin-bottom: 8px;
     font-family: $headerFont;
     font-size: 1.5em;
     color: $orange;
@@ -331,6 +331,12 @@ h5 {
     margin-top: 20px;
 }
 
+#pets-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 #addPetForm {
     font-family: $headerFont;
     padding: 20px;
@@ -353,25 +359,35 @@ h5 {
 
 .account-pet-card {
     margin: 8px;
-    padding: 4px;
-    width: 500px;
+    padding: 5px;
+    width: 450px;
     font-family: $bodyFont;
     font-weight: bold;
     color: $brown;
     border: 1px solid $brown;
     border-radius: 5px;
-    box-shadow: 2px 2px $lightOrange;
+    box-shadow: 3px 3px $lightOrange;
 }
 
 .account-pet-detail span {
     float: right;
+    text-align: right;
     font-weight: none;
+    width: 250px;
 }
 
-.history-card {
-    border: 1px solid $brown;
-    padding: 4px;
-    margin-top: 8px;
+.account-rental-card {
+    margin: 8px;
+    padding: 5px;
+    width: 250px;
+    text-align: center;
+    font-family: $bodyFont;
+    font-weight: bold;
     color: $brown;
-    background-color: $tan;
+    border: 1px solid $brown;
+    border-radius: 5px;
+    box-shadow: 3px 3px $lightOrange;
 }
+
+
+

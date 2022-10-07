@@ -26,7 +26,8 @@ petController.createPet = async (req, res, next) => {
 //get all pets to retrieve all Pets in DB
 petController.getAllPets = async (req, res, next) => {
   console.log('inside petController.getAllPets');
-  if (req.params.name === '') {
+  // if (req.params.name === undefined) {
+    // console.log('inside petController.getAllPets - no name')
     try {
       const queryString = 'SELECT * FROM pet';
       const data = await db.query(queryString);
@@ -38,20 +39,23 @@ petController.getAllPets = async (req, res, next) => {
         message: { err: 'petController.getAllPets: check server log for details' }
       });
     }
-  } else {
-    try {
-      const values = [req.params.name]
-      const queryString = `SELECT * FROM pet WHERE name ILIKE '%$1%'`
-      const data = await db.query(queryString, values);
-      res.locals.pets = data.rows;
-      return next();
-    } catch (error) {
-      return next({
-        log: 'Express error handler caught error in petController.getAllPets',
-        message: { err: 'petController.getAllPets: check server log for details' }
-      });
-    }
-  }
+  // }
+  // JW - searching for a specifc pet name, commented out to avoid error in marketplace rendering
+  // else {
+  //   try {
+  //     console.log('inside petController.getAllPets - with name')
+  //     const values = [req.params.name]
+  //     const queryString = `SELECT * FROM pet WHERE name ILIKE '%$1%'`
+  //     const data = await db.query(queryString, values);
+  //     res.locals.pets = data.rows;
+  //     return next();
+  //   } catch (error) {
+  //     return next({
+  //       log: 'Express error handler caught error in petController.getAllPets',
+  //       message: { err: 'petController.getAllPets: check server log for details' }
+  //     });
+  //   }
+  // }
 }
 
 petController.getByDate = async (req, res, next) => {
