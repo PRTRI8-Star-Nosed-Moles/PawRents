@@ -1,4 +1,3 @@
-const { ModuleFilenameHelpers } = require('webpack');
 const db = require('../models/pawrentsModel.js');
 
 const reservationController = {};
@@ -33,7 +32,7 @@ reservationController.readUserReservation = async (req, res, next) => {
     const values = [username]
     
 
-    const queryString = `SELECT * FROM reservation WHERE username=$1`;
+    const queryString = `SELECT * FROM reservation JOIN pet on reservation.pet_id = pet._id WHERE username = $1`;
 
     const data = await db.query(queryString,values);
 

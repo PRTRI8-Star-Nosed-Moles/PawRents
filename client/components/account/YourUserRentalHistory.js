@@ -14,7 +14,7 @@ export const YourUserRentalHistory = () => {
             method: "GET"
           })
           const data = await response.json();
-        //   console.log('new data', data);
+          console.log('new data', data);
           setPetsRented(data)
             
         } catch (err){
@@ -32,7 +32,7 @@ export const YourUserRentalHistory = () => {
         <div>
             <h5>My user rental history</h5>
 
-        {petsRented.map((history, i) => <YourUserRentalHistoryCard key={i} obj={history}/>)}
+        {petsRented.length ? petsRented.map((history, i) => <YourUserRentalHistoryCard key={i} obj={history}/>) : <p>No pets rented yet.</p>}
         
         </div>
     )
