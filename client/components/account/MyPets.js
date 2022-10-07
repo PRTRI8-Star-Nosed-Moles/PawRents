@@ -21,14 +21,14 @@ export const MyPets = (props) => {
     }, [])
     return (
         <div>
-          <div>
-            <p>{pet.name}</p>
-            <p>{pet.age}</p>
-            <p>{pet.price}</p>
-            <p>{pet.bio}</p>
+          <div className="account-pet-card">
+            <div className="account-pet-detail">Name:<span className="account-pet-detail-value">{pet.name}</span></div>
+            <div className="account-pet-detail">Age:<span className="account-pet-detail-value">{pet.age}</span></div>
+            <div className="account-pet-detail">Current Listed Price:<span className="account-pet-detail-value">{pet.price}</span></div>
+            <div className="account-pet-detail">Bio:<span className="account-pet-detail-value">{pet.bio}</span></div>
           </div>
           <div>
-            <p>Reservations</p>
+            {/* <p>Reservations</p> */}
             {rentalDates.map((rental, i) => <PetRentals key={i} rental={rental}/>)}
           </div>
         </div>
