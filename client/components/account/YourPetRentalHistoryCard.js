@@ -8,7 +8,7 @@ export const YourPetRentalHistoryCard = (props) => {
     const year = newDate.getFullYear()
     
     return (
-        <div>
+        <div className="account-pet-card" >
           <p>Date: {month + '/' + day + '/' + year}</p>
           <p>Reserved by: {props.obj.username}</p>
         </div>

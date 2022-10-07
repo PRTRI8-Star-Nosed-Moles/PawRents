@@ -13,6 +13,7 @@ export const Account = () => {
 
 
     const [myPets, setMyPets] = useState([])
+    const [petAdd, setPetAdd] = useState(false)
 
     const fetchMyPets = async () => {
       try {
@@ -20,22 +21,13 @@ export const Account = () => {
           method: "GET"
         });
         const response = await data.json();
-        setMyPets1(response)
+        console.log('response from feetchMypets', response)
+        setMyPets(response)
       } catch(err) {
         console.log(err)
       }
     }
 
-    const [petAdd, setPetAdd] = useState(false)
-
-    // const fetchMyPets = async () => {
-    //   const data = await fetch(`/api/pet/mypets/${username}`, {
-    //       method: "GET"
-    //   })
-    //   const response = await data.json()
-    //   setMyPets(response)
-    //   console.log(response)
-    // }
 
     useEffect(() => {
       fetchMyPets()
@@ -52,14 +44,11 @@ export const Account = () => {
     return (
         <div>
           <h1>Account for {username}</h1>
+
+          <h5>My pets</h5>
+          {myPets.map((pet, i) => <MyPets key={i} obj={pet}/>)}
           {petAdd === false ? '' : <AddPet/>}
-          <div>
-            <h4>My pets</h4>
-            {myPets.map((pet, i) => <MyPets key={i} pet={pet}/>)}
-          </div>
           <button onClick={changeAdd}>Add Pet</button>
-          
-          {myPets.map((myPets, i) =><MyPets key={i} obj={myPets} />)}
           
           <div id="account-history">
             <YourPetRentalHistory />
