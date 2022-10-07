@@ -1,9 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import {HistoryCard} from './HistoryCard'
 
 export const RentalHistory = () =>{
     
     const [rentalHistory, setRentalHistory] = useState([]);
+
+
 
     const username = sessionStorage.getItem('username');
 
@@ -25,21 +28,9 @@ export const RentalHistory = () =>{
         <div>
             {rentalHistory.map((history, i) => <HistoryCard key={i} obj={history}/>)}
             <h5>Your Pet's Rental History</h5>
-            <ul>
-                <li>transaction ID</li>
-                <li>date</li>
-                <li>pet name</li>
-                <li>date</li>
-            </ul>
-
-            <h5>Pets you've rented</h5>
-            <ul>
-                <li>transaction ID</li>
-                <li>date</li>
-                <li>pet name</li>
-                <li>date</li>
-            </ul>
+            
         </div>
     )
 
 }
+
