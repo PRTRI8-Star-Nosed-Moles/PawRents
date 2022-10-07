@@ -6,7 +6,6 @@ import { YourUserRentalHistory } from "./YourUserRentalHistory";
 import { MyPets } from "./MyPets"
 
 
-
 export const Account = () => {
     const location = useLocation();
     const username = sessionStorage.getItem('username');
@@ -43,12 +42,14 @@ export const Account = () => {
 
     return (
         <div className="account-container">
-          <h4>Account for {username}</h4>
-
+          <h4>{username}</h4>
           <h5>My pets</h5>
-          {myPets.map((pet, i) => <MyPets key={i} obj={pet}/>)}
+
+          <div id="pets-display">
+            {myPets.map((pet, i) => <MyPets key={i} obj={pet}/>)}
+          </div>
           {petAdd === false ? '' : <AddPet/>}
-          <button onClick={changeAdd} className="buttonStyles">Add Pet</button>
+          <button onClick={changeAdd} className="buttonStyles">add pet</button>
           
           <div id="account-history">
             <YourPetRentalHistory />
