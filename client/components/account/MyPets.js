@@ -4,7 +4,7 @@ import { YourPetRentalHistory } from './YourPetRentalHistory';
 export const MyPets = (props) => {
   console.log("props in MyPets",props)
 
-    
+
     const [rentalDates, setRentalDates] = useState([])
 
     const fetchRentalDates = async () => {
@@ -25,6 +25,7 @@ export const MyPets = (props) => {
 
     return (
         <div>
+        
           <div className="account-pet-card">
             <div className="account-pet-detail">Name:<span className="account-pet-detail-value">{props.obj.name}</span></div>
             <div className="account-pet-detail">Age:<span className="account-pet-detail-value">{props.obj.age}</span></div>
@@ -32,8 +33,8 @@ export const MyPets = (props) => {
             <div className="account-pet-detail">Bio:<span className="account-pet-detail-value">{props.obj.bio}</span></div>
           </div>
           <div>
-            <h4>Reservations</h4>
-            {rentalDates.map((rental, i) => <YourPetRentalHistory key={i} rental={rental}/>)}
+           
+            {/* rentalDates.map((rental, i) => <YourPetRentalHistory key={i} rental={rental}/>) */}
           </div>
         </div>
     )

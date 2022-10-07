@@ -30,7 +30,7 @@ export const YourUserRentalHistory = () => {
 
     return(
         <div>
-            <h5>Pet's you've rented</h5>
+            <h5>Your user rental history</h5>
 
         {petsRented.map((history, i) => <YourUserRentalHistoryCard key={i} obj={history}/>)}
         
