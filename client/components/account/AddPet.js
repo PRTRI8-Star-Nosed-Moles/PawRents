@@ -84,7 +84,7 @@ export const AddPet = (props) => {
     return (
         <form onSubmit={handleSubmit}>
                 <label>
-                    Name:
+                    Pet Name:
                     <input
                         type="type"
                         name="firstName"
@@ -104,7 +104,7 @@ export const AddPet = (props) => {
                 </label>
                 <p></p>
                 <label>
-                    Weight:
+                    Weight (lbs):
                     <input 
                         type="type"
                         name="weight"
@@ -144,7 +144,7 @@ export const AddPet = (props) => {
                 </label>
                 <p></p>
                 <label>
-                    Price:
+                    Rental Price (per day):
                     <input 
                         type="type"
                         name="price"
