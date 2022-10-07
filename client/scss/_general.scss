@@ -317,24 +317,50 @@ h5 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     margin-top: 20px;
 }
 
-.account-pet-card {
-    padding: 4px;
-    width: 300px;
+#addPetForm {
+    font-family: $headerFont;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
 
+#addPetForm div {
+    width: 350px;
+    margin: 5px;
+}  
+
+#addPetForm div input {
+    margin-left: 5px;
+    float: right;
+    position: relative;
+}
+
+.account-pet-card {
+    margin: 8px;
+    padding: 4px;
+    width: 500px;
+    font-family: $bodyFont;
+    font-weight: bold;
     color: $brown;
-    border: 1px solid gray;
+    border: 1px solid $brown;
+    border-radius: 5px;
+    box-shadow: 2px 2px $lightOrange;
 }
 
 .account-pet-detail span {
     float: right;
+    font-weight: none;
 }
 
 .history-card {
-    border: 1px solid gray;
+    border: 1px solid $brown;
     padding: 4px;
     margin-top: 8px;
     color: $brown;

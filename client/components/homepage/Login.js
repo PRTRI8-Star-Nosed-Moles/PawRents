@@ -82,7 +82,7 @@ export const Login = () => {
             <p></p>
             <button type="submit" className="buttonStyles">log in</button>
           </form>
-          {invalidLogin === 'invalid' ? <p>Username and password invalid</p> : ''}
+          <div>{invalidLogin === 'invalid' ? <p>Username and password invalid</p> : ''}</div>
         </div>
     )
 }

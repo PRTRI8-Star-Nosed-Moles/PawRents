@@ -3,7 +3,7 @@ import { AddPet } from "./AddPet";
 import { YourPetRentalHistory } from "./YourPetRentalHistory";
 import { useLocation } from "react-router-dom";
 import { YourUserRentalHistory } from "./YourUserRentalHistory";
-import {MyPets} from "./MyPets"
+import { MyPets } from "./MyPets"
 
 
 
@@ -42,13 +42,13 @@ export const Account = () => {
     }, [])
 
     return (
-        <div>
-          <h1>Account for {username}</h1>
+        <div className="account-container">
+          <h4>Account for {username}</h4>
 
           <h5>My pets</h5>
           {myPets.map((pet, i) => <MyPets key={i} obj={pet}/>)}
           {petAdd === false ? '' : <AddPet/>}
-          <button onClick={changeAdd}>Add Pet</button>
+          <button onClick={changeAdd} className="buttonStyles">Add Pet</button>
           
           <div id="account-history">
             <YourPetRentalHistory />
