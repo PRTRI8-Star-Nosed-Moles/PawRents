@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { AddPet } from "./AddPet";
 import { RentalHistory } from "./RentalHistory";
 import { useLocation } from "react-router-dom";
-import { MyPets } from "./MyPets";
+import { PetsRented } from "./PetsRented";
+
 
 export const Account = () => {
     const location = useLocation();
@@ -41,6 +42,7 @@ export const Account = () => {
           <button onClick={changeAdd}>Add Pet</button>
           <div id="account-history">
             <RentalHistory />
+            <PetsRented />
           </div>
         </div>
     )
