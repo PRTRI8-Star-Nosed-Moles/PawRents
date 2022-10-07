@@ -21,11 +21,11 @@ export const MyPets = (props) => {
     }, [])
     return (
         <div>
-          <div>
-            <p>{pet.name}</p>
-            <p>{pet.age}</p>
-            <p>{pet.price}</p>
-            <p>{pet.bio}</p>
+          <div id="account-pet-card">
+            <div id="account-pet-detail">Name:<p>{pet.name}</p></div>
+            <div id="account-pet-detail">Age:<p>{pet.age}</p></div>
+            <div id="account-pet-detail">Current Listed Price:<p>{pet.price}</p></div>
+            <div id="account-pet-detail">Bio:<p>{pet.bio}</p></div>
           </div>
           <div>
             <p>Reservations</p>
