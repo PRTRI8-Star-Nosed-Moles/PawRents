@@ -8,6 +8,10 @@ router.post('/:username', petController.createPet, petController.addPetOwner, (r
   return res.status(200).json(res.locals.pet);
 });
 
+router.get('/date/:date', petController.getByDate, (req, res) => {
+  return res.status(200).json(res.locals.pets)
+})
+
 router.get('/mypets/:username', petController.getMyPets, (req, res) => {
   return res.status(200).json(res.locals.myPets)
 })
@@ -16,6 +20,12 @@ router.get('/mypets/:username', petController.getMyPets, (req, res) => {
 router.get('/', petController.getAllPets, (req, res) => {
   return res.status(200).json(res.locals.pets);
 });
+
+router.post('/', petController.getPetsByName, (req, res) => {
+  return res.status(200).json(res.locals.pets);
+})
+
+
 
 // get single pet (maybe?)
 router.get('/:id', petController.getAPet, (req, res) => {
