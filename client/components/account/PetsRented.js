@@ -66,13 +66,13 @@ export const PetsRented= () =>{
 
 
     return(
-        <div>
-        <h1>Pet's you've rented</h1>
-        <button 
-          onClick = {getPetsRented}
-        >Testing Button</button>
-        {petsYouRented}
-
+        <div className="pets-rented">
+            <h5>Pet's you've rented</h5>
+            <button 
+            className= "buttonStyles"
+            onClick = {getPetsRented}
+            >Testing Button</button>
+            {petsYouRented}
         </div>
     )
 }

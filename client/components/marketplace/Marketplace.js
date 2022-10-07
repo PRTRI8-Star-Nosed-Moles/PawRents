@@ -29,16 +29,16 @@ export const Marketplace = ({ items }) => {
     }, [])
 
     return ( 
-        <div>
-            <div id='marketplace'>
-                <section className='cards'>
-                {pets.map((pet, i) => (
-                    <PetCard key={i} item={pet}></PetCard>
-                ))}
-                </section>
-            </div>
-            
+
+        <div id='marketplace'>
+            <section className='cards'>
+            {pets.map((pet, i) => (
+                <PetCard key={i} item={pet}></PetCard>
+            ))}
+            </section>
         </div>
+            
+ 
     )
 }
 
