@@ -34,8 +34,9 @@ export const Account = () => {
     }, [])
 
     return (
-        <div>
-          <h1>Account</h1>
+        <div className="account-container">
+          <h4>Account</h4>
+          
           {petAdd === false ? '' : <AddPet/>}
           <div>
             <h4>My pets</h4>
