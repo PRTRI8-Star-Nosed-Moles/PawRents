@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from 'react';
+import { HistoryCard } from "./HistoryCard";
 
 export const PetsRented= () =>{
 
@@ -26,7 +27,8 @@ export const PetsRented= () =>{
 
 
     useEffect( ()=>{
-        console.log("need function to loop through obj")
+        console.log("need function to loop through obj");
+        // getPetsRented();
 
     }, [petsRented])
 
@@ -53,8 +55,11 @@ export const PetsRented= () =>{
     const petsYouRented = [];
 
     for(let i = 0; i < petsRented.length; i++){
-        petsYouRented.push(
-            
+        petsYouRented.push(<HistoryCard
+          _id = {petsRented[i]._id}
+          date = {petsRented[i].date}
+          pet_id = {petsRented[i].pet_id}
+          />  
         )
     }
 
@@ -66,13 +71,7 @@ export const PetsRented= () =>{
         <button 
           onClick = {getPetsRented}
         >Testing Button</button>
-        
-          <ul>
-            <li>transaction ID</li>
-            <li>date</li>
-            <li>pet name</li>
-            <li>date</li>
-          </ul>
+        {petsYouRented}
 
         </div>
     )
