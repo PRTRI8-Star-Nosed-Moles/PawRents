@@ -162,7 +162,7 @@ export const AddPet = (props) => {
                     ></input>
                 </label>
                 <p></p>
-                <input type="submit" />
+                <input type="submit" className="buttonStyles"/>
 
 
 
