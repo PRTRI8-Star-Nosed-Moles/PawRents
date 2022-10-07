@@ -54,6 +54,7 @@ export const Marketplace = ({ items }) => {
     }, [])
 
     return ( 
+<<<<<<< HEAD
         <div>
             <div id='marketplace'>
                 <div>
@@ -81,7 +82,18 @@ export const Marketplace = ({ items }) => {
                 </section>
             </div>
             
+=======
+
+        <div id='marketplace'>
+            <section className='cards'>
+            {pets.map((pet, i) => (
+                <PetCard key={i} item={pet}></PetCard>
+            ))}
+            </section>
+>>>>>>> dev
         </div>
+            
+ 
     )
 }
 
