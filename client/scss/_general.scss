@@ -321,6 +321,18 @@ h5 {
     margin-top: 20px;
 }
 
+.account-pet-card {
+    padding: 4px;
+    width: 300px;
+
+    color: $brown;
+    border: 1px solid gray;
+}
+
+.account-pet-detail span {
+    float: right;
+}
+
 .history-card {
     border: 1px solid gray;
     padding: 4px;
