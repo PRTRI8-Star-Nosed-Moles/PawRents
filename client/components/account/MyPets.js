@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { PetRentals } from './PetRentals';
+import { YourPetRentalHistory } from './YourPetRentalHistory';
 
 export const MyPets = (props) => {
-    const {pet} = props
+  console.log("props in MyPets",props)
+
+    
     const [rentalDates, setRentalDates] = useState([])
+
     const fetchRentalDates = async () => {
         try {
           const data = await fetch(`/api/reservation/pet/${pet._id}`, {
@@ -11,7 +14,7 @@ export const MyPets = (props) => {
           });
           const response = await data.json()
           setRentalDates(response)
-          console.log(response)
+          console.log("fetchRentalDates resonse: ",response)
         } catch(err) {
           console.log('error' + err)
         }
@@ -19,17 +22,18 @@ export const MyPets = (props) => {
     useEffect(() => {
         fetchRentalDates()
     }, [])
+
     return (
         <div>
           <div className="account-pet-card">
-            <div className="account-pet-detail">Name:<span className="account-pet-detail-value">{pet.name}</span></div>
-            <div className="account-pet-detail">Age:<span className="account-pet-detail-value">{pet.age}</span></div>
-            <div className="account-pet-detail">Current Listed Price:<span className="account-pet-detail-value">{pet.price}</span></div>
-            <div className="account-pet-detail">Bio:<span className="account-pet-detail-value">{pet.bio}</span></div>
+            <div className="account-pet-detail">Name:<span className="account-pet-detail-value">{props.obj.name}</span></div>
+            <div className="account-pet-detail">Age:<span className="account-pet-detail-value">{props.obj.age}</span></div>
+            <div className="account-pet-detail">Current Listed Price:<span className="account-pet-detail-value">{props.obj.price}</span></div>
+            <div className="account-pet-detail">Bio:<span className="account-pet-detail-value">{props.obj.bio}</span></div>
           </div>
           <div>
-            {/* <p>Reservations</p> */}
-            {rentalDates.map((rental, i) => <PetRentals key={i} rental={rental}/>)}
+            <h4>Reservations</h4>
+            {rentalDates.map((rental, i) => <YourPetRentalHistory key={i} rental={rental}/>)}
           </div>
         </div>
     )

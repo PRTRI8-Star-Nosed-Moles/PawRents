@@ -7,13 +7,25 @@ import { Search } from '../homepage/Search';
 export const Marketplace = ({ items }) => {
     const [pets, setPets] = useState([])
 
+    const [rentalDate, setRentalDate] = useState('')
+
     const location = useLocation();
 
     console.log(sessionStorage.getItem('username'))
+
+    const [searchString, setSearchString] = useState('')
+
+    const changeSearchString = (e) => {
+        setSearchString(e.target.value)
+    }
+
+    const changeRentalDate = (e) => {
+        setRentalDate(e.target.value)
+    }
     
     const fetchPets = async () => {
       try {
-        const response = await fetch('/api/pet', {
+        const response = await fetch(`/api/pet/${searchString}`, {
             method: "GET"
         })
         const data = await response.json();
@@ -23,6 +35,19 @@ export const Marketplace = ({ items }) => {
         console.log(err)
       }
     } 
+
+
+    const fetchByDate = async () => {
+      try {  
+        const data = await fetch(`/api/pet/date/${rentalDate}`, {
+            method: "GET"
+        })
+        const response = await data.json()
+        setPets(response)
+      } catch(err) {
+        console.log(err)
+      }
+    }
  
     useEffect(() => {
         fetchPets()
