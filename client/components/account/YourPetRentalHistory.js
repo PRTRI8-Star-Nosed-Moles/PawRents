@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import {HistoryCard} from './HistoryCard'
+import {YourPetRentalHistoryCard} from './YourPetRentalHistoryCard'
 
-export const RentalHistory = () =>{
+export const YourPetRentalHistory = () =>{
     
     const [rentalHistory, setRentalHistory] = useState([]);
 
@@ -11,12 +11,12 @@ export const RentalHistory = () =>{
     const username = sessionStorage.getItem('username');
 
     const updateHistory = async () => {
-        console.log('fetch')
+        
         const data = await fetch(`/api/reservation/user/${username}`, {
             method: "GET"
         })
         const response = await data.json()
-        console.log(response + 'fetch history')
+        // console.log(response + 'fetch history')
         setRentalHistory(response)
     }
 
@@ -26,11 +26,16 @@ export const RentalHistory = () =>{
 
     return(
         <div>
-            {rentalHistory.map((history, i) => <HistoryCard key={i} obj={history}/>)}
-            <h5>Your Pet's Rental History</h5>
+        <h5>Your Pet's Rental History</h5>
+
+        {rentalHistory.map((history, i) => <YourPetRentalHistoryCard key={i} obj={history}/>)}
+           
+            
             
         </div>
     )
 
 }
+
+
 

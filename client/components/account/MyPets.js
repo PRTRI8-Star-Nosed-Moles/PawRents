@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { PetRentals } from './PetRentals';
+import { YourPetRentalHistory } from './YourPetRentalHistory';
 
 export const MyPets = (props) => {
-    const {pet} = props
+  console.log("props in MyPets",props)
+
+    
     const [rentalDates, setRentalDates] = useState([])
+
     const fetchRentalDates = async () => {
         try {
           const data = await fetch(`/api/reservation/pet/${pet._id}`, {
@@ -11,7 +14,7 @@ export const MyPets = (props) => {
           });
           const response = await data.json()
           setRentalDates(response)
-          console.log(response)
+          console.log("fetchRentalDates resonse: ",response)
         } catch(err) {
           console.log('error' + err)
         }
@@ -19,17 +22,19 @@ export const MyPets = (props) => {
     useEffect(() => {
         fetchRentalDates()
     }, [])
+
     return (
         <div>
           <div>
-            <p>{pet.name}</p>
-            <p>{pet.age}</p>
-            <p>{pet.price}</p>
-            <p>{pet.bio}</p>
+            <p>Pet Name: {props.obj.name}</p>
+            <p>Pet Age: {props.obj.age}</p>
+            <p>Pet Price: {props.obj.price}</p>
+            <p>Bio: {props.obj.bio}</p>
+            <p>Dog Owner: {props.obj.username}</p>
           </div>
           <div>
-            <p>Reservations</p>
-            {rentalDates.map((rental, i) => <PetRentals key={i} rental={rental}/>)}
+            <h4>Reservations</h4>
+            {rentalDates.map((rental, i) => <YourPetRentalHistory key={i} rental={rental}/>)}
           </div>
         </div>
     )
