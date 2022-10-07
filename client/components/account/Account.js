@@ -20,24 +20,22 @@ export const Account = () => {
           method: "GET"
         });
         const response = await data.json();
-        setMyPets(response)
+        setMyPets1(response)
       } catch(err) {
         console.log(err)
       }
     }
 
     const [petAdd, setPetAdd] = useState(false)
-    
-    const [myPets, setMyPets] = useState([]);
 
-    const fetchMyPets = async () => {
-      const data = await fetch(`/api/pet/mypets/${username}`, {
-          method: "GET"
-      })
-      const response = await data.json()
-      setMyPets(response)
-      console.log(response)
-    }
+    // const fetchMyPets = async () => {
+    //   const data = await fetch(`/api/pet/mypets/${username}`, {
+    //       method: "GET"
+    //   })
+    //   const response = await data.json()
+    //   setMyPets(response)
+    //   console.log(response)
+    // }
 
     useEffect(() => {
       fetchMyPets()
@@ -52,14 +50,8 @@ export const Account = () => {
     }, [])
 
     return (
-<<<<<<< HEAD
         <div>
           <h1>Account for {username}</h1>
-=======
-        <div className="account-container">
-          <h4>Account</h4>
-          
->>>>>>> dev
           {petAdd === false ? '' : <AddPet/>}
           <div>
             <h4>My pets</h4>
