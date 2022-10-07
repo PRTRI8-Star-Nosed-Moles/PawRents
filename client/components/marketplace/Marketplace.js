@@ -54,35 +54,6 @@ export const Marketplace = ({ items }) => {
     }, [])
 
     return ( 
-<<<<<<< HEAD
-        <div>
-            <div id='marketplace'>
-                <div>
-                    <p>Search by name:</p>
-                    <form>
-                        <label>
-                            Type name:
-                            <input type="text" value={searchString} onChange={changeSearchString}/>
-                        </label>
-                    </form>
-                </div>
-                <div>
-                    <p>Search by date:</p>
-                    <form>
-                        <label>
-                            <input type="date" value={rentalDate} onChange={changeRentalDate}/>
-                        </label>
-                        <input type="submit" value="Filter by date"/>
-                    </form>
-                </div>
-                <section className='cards'>
-                {pets.map((pet, i) => (
-                    <PetCard key={i} item={pet}></PetCard>
-                ))}
-                </section>
-            </div>
-            
-=======
 
         <div id='marketplace'>
             <section className='cards'>
@@ -90,7 +61,6 @@ export const Marketplace = ({ items }) => {
                 <PetCard key={i} item={pet}></PetCard>
             ))}
             </section>
->>>>>>> dev
         </div>
             
  
