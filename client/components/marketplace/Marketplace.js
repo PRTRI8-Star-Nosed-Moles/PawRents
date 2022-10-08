@@ -91,18 +91,20 @@ export const Marketplace = () => {
 
     return (
         <div id='marketplace'>
-            <label>
-                Search by name:
-                <input type="text" onChange={changeSearchString} value={searchString}  name="searchname"/>
-            </label>
-            <form onSubmit={handleSubmit}>
-                <p>Searching for pets available on: {readableDate}</p>
+            <section className="searchContainer">
                 <label>
-                    Change date:
-                    <input type="date" onChange={changeRentalDate}/>
+                    Search by name:
+                    <input type="text" onChange={changeSearchString} value={searchString}  className="searchInput"/>
                 </label>
-                <input type="submit" value="Search"/>
-            </form>
+                <form onSubmit={handleSubmit} className="searchForm">
+                    <p>Searching for pets available on: <span className="blackText">{readableDate}</span></p>
+                    <label>
+                        Change date:
+                        <input type="date" onChange={changeRentalDate} className="searchInput"/>
+                    </label>
+                    <input type="submit" value="Search" className="searchButton"/>
+                </form>
+            </section>
             <section className='cards'>
             {pets.map((pet, i) => (
                 <PetCard key={i} item={pet}></PetCard>
