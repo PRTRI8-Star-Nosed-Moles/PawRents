@@ -5,30 +5,18 @@ const PORT = 3000;
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-// handle parsing request body
+// handle parsing request body, json parser, cors module.
 app.use(express.json());
-
 app.use(cors());
-
 app.use(bodyParser.json());
 
-// login
-// sign-up
-// user
-// pet
-
-// handle requests to server using router
-
-// require routers
+// required Routers
 const loginRouter = require('./routes/login.js');
 const userRouter = require('./routes/user.js');
 const petRouter = require('./routes/pet.js');
 const reservationRouter = require('./routes/reservation.js');
 
-// www.rentapet.com/login -> login website 8080
-// do requests to www.server.com/api/login 3000
-
-// use routers with endpoints
+// Router endpoints
 app.use('/api/login', loginRouter);
 app.use('/api/user', userRouter);
 app.use('/api/pet', petRouter);
@@ -38,6 +26,7 @@ app.use('/api/reservation', reservationRouter);
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).json({"unknown": "route"}));
 
+// ERROR HANDLER
 app.use((err, req, res, next) => {
     const defaultErr = {
       log: 'Express error handler caught unknown middleware error',
@@ -49,9 +38,7 @@ app.use((err, req, res, next) => {
     return JSON.stringify(errorObj.status, errorObj.message);
 });
 
-/*
-React will use port 3000 so use another port
-*/
+// Express app will use port 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
 });

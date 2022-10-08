@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
 export const AddPet = (props) => {
+    //saving the username of the person logged in to the username variable
     const username = sessionStorage.getItem('username')
+    //setting state of the data that will be inputted in the form below
     const [petData, setPetData] = useState({
         name: '',
         age: '',
@@ -12,11 +14,11 @@ export const AddPet = (props) => {
         price: '',
         bio: ''
     })
-    const [petAdd, setPetAdd] = useState(false)
 
+    //handleSubmit posts the data in the form to the pet table
     const handleSubmit = async (e) => {
-        console.log(username)
-        console.log('submit')
+        console.log('inside AddPet - handleSubmit');
+        //preventDefault so it doesn't reload the page
         e.preventDefault();
         const data = await fetch(`/api/pet/${username}`, {
             method: "POST",
@@ -28,6 +30,8 @@ export const AddPet = (props) => {
         props.fetch()
     }
 
+    //function that changes the state for name based on the e.target.value which is what the user inputted
+    //this is the same format for all the fields below
     const changeName = (e) => {
         setPetData({
             ...petData,
@@ -88,6 +92,7 @@ export const AddPet = (props) => {
         petAdd === false ? setPetAdd(true) : setPetAdd(false)
     }
 
+    //return is the form to add a pet
     return (
         <form id="addPetForm" onSubmit={handleSubmit}>
                 <div>

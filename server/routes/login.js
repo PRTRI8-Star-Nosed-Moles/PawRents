@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const userController = require('../controllers/userController.js');
+// require controllers
 const loginController = require('../controllers/loginController.js');
 
+// login POST request
 router.post('/', loginController.validateUser, (req, res) => {
+    // return status on un/successful validation
     return res.status(200).json({status: res.locals.validate})
 });
 

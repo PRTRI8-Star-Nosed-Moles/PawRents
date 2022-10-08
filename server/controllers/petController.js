@@ -2,7 +2,7 @@ const db = require('../models/pawrentsModel.js');
 
 const petController = {};
 
-//CREATE A PET
+// create - single pet
 petController.createPet = async (req, res, next) => {
   console.log('inside petController.createPet');
   try {
@@ -21,7 +21,7 @@ petController.createPet = async (req, res, next) => {
     });
   }
 }
-
+// create - new record in user_pet join table
 petController.getPetsByName = async (req, res, next) => {
   try {
         const values = req.body.string
@@ -37,13 +37,9 @@ petController.getPetsByName = async (req, res, next) => {
       }
 }
 
-//READ
-//get all pets to retrieve all Pets in DB
+// read - retrieve all Pets in DB
 petController.getAllPets = async (req, res, next) => {
-  console.log(req.params.name)
   console.log('inside petController.getAllPets');
-  // if (req.params.name === undefined) {
-    // console.log('inside petController.getAllPets - no name')
     try {
       const queryString = 'SELECT * FROM pet LIMIT 10';
       const data = await db.query(queryString);
@@ -55,25 +51,9 @@ petController.getAllPets = async (req, res, next) => {
         message: { err: 'petController.getAllPets: check server log for details' }
       });
     }
-  // }
-  // JW - searching for a specifc pet name, commented out to avoid error in marketplace rendering
-  // else {
-  //   try {
-  //     console.log('inside petController.getAllPets - with name')
-  //     const values = [req.params.name]
-  //     const queryString = `SELECT * FROM pet WHERE name ILIKE '%$1%'`
-  //     const data = await db.query(queryString, values);
-  //     res.locals.pets = data.rows;
-  //     return next();
-  //   } catch (error) {
-  //     return next({
-  //       log: 'Express error handler caught error in petController.getAllPets',
-  //       message: { err: 'petController.getAllPets: check server log for details' }
-  //     });
-  //   }
-  // }
 }
 
+// read - all pets with availability on a certain date
 petController.getByDate = async (req, res, next) => {
   const date = req.body.searchDate
   const values = [date]
@@ -96,6 +76,7 @@ petController.getByDate = async (req, res, next) => {
   next()
 }
 
+// create - new record in user_pet join table
 petController.addPetOwner = async (req, res, next) => {
   console.log(res.locals.pet._id)
   const petId = res.locals.pet._id;
@@ -112,7 +93,7 @@ petController.addPetOwner = async (req, res, next) => {
   }
 }
 
-// get a pet
+// read - get a pet via pet_id
 petController.getAPet = async (req, res, next) => {
   console.log('inside petController.getAPet');
   try {
@@ -129,6 +110,7 @@ petController.getAPet = async (req, res, next) => {
   }
 };
 
+// read - get all pets owned by a specific user
 petController.getMyPets = async (req, res, next) => {
   const {username} = req.params
   const values = [username]
@@ -146,7 +128,7 @@ petController.getMyPets = async (req, res, next) => {
   }
 }
 
-//UPDATE PET (Currently only bio can be updated)
+// update - pet details (currently only bio can be updated)
 petController.updatePet = async (req, res, next) => {
   console.log('inside petController.updatePet');
   try {
@@ -171,7 +153,7 @@ petController.updatePet = async (req, res, next) => {
   }
 };
 
-//DELETE PET
+// delete - remove a record from pet table (no reservation delete included)
 petController.deletePet = async (req, res, next) => {
   console.log('inside petController.deletePet');
   try {
@@ -194,7 +176,5 @@ petController.deletePet = async (req, res, next) => {
     });
   }
 };
-
-
 
 module.exports = petController;

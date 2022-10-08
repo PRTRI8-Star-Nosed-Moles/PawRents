@@ -10,7 +10,6 @@ import { Account } from './components/account/Account';
 // component A, B, C...
 
 function App () {
-    // <Link path="/users">click here for users</Link>
     return (
         <>
             <Navbar/>
