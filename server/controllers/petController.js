@@ -171,11 +171,12 @@ petController.updatePet = async (req, res, next) => {
 petController.deletePet = async (req, res, next) => {
   console.log('inside petController.deletePet');
   try {
-    const { id } = req.params;
+    const { name, age, price, bio } = req.body;
     const queryString = `
-      DELETE
-        FROM pet
-        WHERE _id = '${id}'
+      DELETE FROM pet
+        WHERE name = '${name}'
+        AND age = '${age}'
+        AND price = '${price}'
         RETURNING *;
     `;
     const data = await db.query(queryString);
