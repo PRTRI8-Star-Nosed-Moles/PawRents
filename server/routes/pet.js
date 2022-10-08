@@ -17,6 +17,8 @@ router.get('/mypets/:username', petController.getMyPets, (req, res) => {
 })
 
 // get ALL pets
+// JW - reverted to '/' for now to avoid errors in marketplace rendering
+// router.get('/:name', petController.getAllPets, (req, res) => {
 router.get('/', petController.getAllPets, (req, res) => {
   return res.status(200).json(res.locals.pets);
 });
@@ -38,7 +40,7 @@ router.patch('/:id', petController.updatePet, (req, res) => {
 })
 
 // delete pet - stretch
-router.delete('/:id', petController.deletePet, (req, res) => {
+router.delete('/', petController.deletePet, (req, res) => {
   return res.status(200).json(res.locals.pet);
 })
 

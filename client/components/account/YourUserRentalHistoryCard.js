@@ -3,7 +3,8 @@ import React from 'react';
 export const YourUserRentalHistoryCard = (props) => {
     const {
         date,
-        pet_id
+        pet_id,
+        name,
     } = props.obj
 
     //need to link pet_id with pet name to render name here
