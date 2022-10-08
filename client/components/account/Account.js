@@ -20,7 +20,7 @@ export const Account = () => {
           method: "GET"
         });
         const response = await data.json();
-        console.log('response from feetchMypets', response)
+        console.log('response from fetchMypets', response)
         setMyPets(response)
       } catch(err) {
         console.log(err)
@@ -35,10 +35,6 @@ export const Account = () => {
     const changeAdd = () => {
         petAdd === false ? setPetAdd(true) : setPetAdd(false)
     }
-
-    useEffect(() => {
-      fetchMyPets()
-    }, [])
 
     return (
         <div className="account-container">
