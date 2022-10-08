@@ -91,9 +91,6 @@ export const Marketplace = () => {
 
     return (
         <div id='marketplace'>
-<<<<<<< HEAD
-          <div className='searchbar'> <Search/> </div>
-=======
             <section className="searchContainer">
                 <label>
                     Search by name:
@@ -108,7 +105,6 @@ export const Marketplace = () => {
                     <input type="submit" value="Search" className="searchButton"/>
                 </form>
             </section>
->>>>>>> dev
             <section className='cards'>
             {pets.map((pet, i) => (
                 <PetCard key={i} item={pet}></PetCard>
