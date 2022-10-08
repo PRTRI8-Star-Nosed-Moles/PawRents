@@ -12,18 +12,11 @@ export const Search = ({ getQuery}) => {
         <section>
             <form>
                 <input
-<<<<<<< HEAD
-                type='text'
-                placeholder='Search pets...'
-                value=''
-                onChange=''
-=======
                     className="searchInput"
                     type='text'
                     placeholder='Search pets...'
                     value={text}
                     onChange={setText}
->>>>>>> dev
                 />
             </form>
         </section>
