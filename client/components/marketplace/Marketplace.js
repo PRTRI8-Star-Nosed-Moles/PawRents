@@ -39,22 +39,6 @@ export const Marketplace = () => {
         setSearchByDate(e.target.value)
     }
     
-<<<<<<< HEAD
-    //function to get all pets with no filter
-    // const fetchPets = async () => {
-    //   try {
-    //     const response = await fetch(`/api/pet/`, {
-    //         method: "GET"
-    //     })
-    //     const data = await response.json();
-    //     console.log(data)
-    //     setPets(data)
-    //     setPopulatePets(data)
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // } 
-=======
     const fetchPets = async () => {
       console.log('inside fetchPets');
       console.log('searchString --> ', searchString);
@@ -70,7 +54,6 @@ export const Marketplace = () => {
         console.log(err)
       }
     } 
->>>>>>> dev
 
     //form for choosing date
     const handleSubmit = (e) => {
