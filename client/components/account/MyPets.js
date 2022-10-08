@@ -81,8 +81,8 @@ export const MyPets = (props) => {
           
           <div className="petButtonContainer">
             <input type="text" onChange={e => handleUpdateChange(e)} placeholder='New Bio' className="searchInput"></input>
-            <button className="searchButton" onClick={e => updatePet()}>Update</button>
-            <button className="buttonStyles" onClick={deletePet}>delete pet</button>   
+            <button className="buttonStyles" onClick={e => updatePet()}>Update</button>
+            <button className="buttonStyles" onClick={deletePet}>delete</button>   
           </div>
           {/* rentalDates.map((rental, i) => <YourPetRentalHistory key={i} rental={rental}/>) */}
         </div>
