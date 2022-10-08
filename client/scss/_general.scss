@@ -22,7 +22,8 @@ body {
 form class is div around entire form in signup
 */
 .navBar { 
-    display: grid;
+    display: flex;
+    align-items: center;
     padding: 8px 5px 10px 5px;
     background-color: $brown;
     border: 1px solid $brown;
@@ -54,6 +55,22 @@ form class is div around entire form in signup
     border-bottom-style: double;
     border-color: white;
     color: white;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 16px 4px 16px;
+    margin-left: 20px;
+    background-color: $lightOrange;
+    border-radius: 10px;
+    font-family: $bodyFont;
+    color: black;
+}
+
+.logoImg {
+    width: 40px;
 }
 
 
@@ -150,6 +167,16 @@ h5 {
     height: 100%;
 }
 
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginButton {
+    width: fit-content;
+}
+
 .loginForm, #account {
     margin-top: 15px;
     display: flex;
@@ -165,7 +192,7 @@ h5 {
 
 .signup-form {
     font-family: $headerFont;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -187,6 +214,12 @@ h5 {
     padding: 5px;
 }
 
+.signupButtonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 // #marketplace {
 //     width: 100%;
 //     max-width: 1100px;
@@ -196,15 +229,60 @@ h5 {
 //     // margin: 155px;
 // }
 
+//SEARCH
+.searchContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    width: fit-content;
+    font-family: $bodyFont;
+    color: $brown;
+    border: 1px solid $brown;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+.blackText {
+    color: black;
+}
+
+.searchForm {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.searchButton {
+    background-color: $lightOrange;
+    border: 1px $lightBorder solid;
+    border-radius: 8px;
+    padding: 4px 12px;
+    font-family: $bodyFont;
+}
+
+.searchButton:hover {
+    background-color: $orange;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.449)
+}
+
+.searchInput {
+    font-family: $bodyFont;
+    border-radius: 8px;
+    border: 0px;
+    padding: 4px 8px;
+    margin-left: 6px;
+}
+
 .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     // grid-template-columns: repeat(8, 1fr);
-    gap: 1.5rem;
+    gap: 2rem;
     padding: 1rem;
     max-width: 100%;
-    margin: 1rem auto;
+    // margin: 1rem auto;
   }
 
 //   @media (min-width: 600px) {
