@@ -3,25 +3,20 @@ const router = express.Router();
 
 const petController = require('../controllers/petController.js');
 
+router.post('/date', petController.getByDate, (req, res) => {
+  return res.status(200).json(res.locals.pets)
+})
+
 // create pet
 router.post('/:username', petController.createPet, petController.addPetOwner, (req, res) => {
   return res.status(200).json(res.locals.pet);
 });
-
-router.get('/date/:date', petController.getByDate, (req, res) => {
-  return res.status(200).json(res.locals.pets)
-})
 
 router.get('/mypets/:username', petController.getMyPets, (req, res) => {
   return res.status(200).json(res.locals.myPets)
 })
 
 // get ALL pets
-<<<<<<< HEAD
-=======
-// JW - revered to '/' for now to avoid errors in marketplace rendering
-// router.get('/:name', petController.getAllPets, (req, res) => {
->>>>>>> dev
 router.get('/', petController.getAllPets, (req, res) => {
   return res.status(200).json(res.locals.pets);
 });

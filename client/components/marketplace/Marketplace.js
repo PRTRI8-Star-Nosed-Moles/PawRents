@@ -26,12 +26,13 @@ export const Marketplace = () => {
     const [searchString, setSearchString] = useState('')
     //set the readable date for users
     const [readableDate, setReadableDate] = useState(todayReadable)
+    const [reRender, setReRender] = useState(true)
 
     //onchange function for name search input
-    const changeSearchString = async (e) => {
+    const changeSearchString = (e) => {
         setSearchString(e.target.value)
         //invoke function to filter results
-        searchByName()
+        fetchByDate()
     }
 
     //change the date we want to rent
@@ -39,7 +40,6 @@ export const Marketplace = () => {
         setSearchByDate(e.target.value)
     }
     
-<<<<<<< HEAD
     //function to get all pets with no filter
     // const fetchPets = async () => {
     //   try {
@@ -54,23 +54,6 @@ export const Marketplace = () => {
     //     console.log(err)
     //   }
     // } 
-=======
-    const fetchPets = async () => {
-      console.log('inside fetchPets');
-      console.log('searchString --> ', searchString);
-      try {
-        // const response = await fetch(`/api/pet/${searchString}`, {
-        const response = await fetch(`/api/pet/${searchString}`, {
-            method: "GET"
-        })
-        const data = await response.json();
-        console.log('fetchPets data -->', data)
-        setPets(data)
-      } catch(err) {
-        console.log(err)
-      }
-    } 
->>>>>>> dev
 
     //form for choosing date
     const handleSubmit = (e) => {
@@ -82,29 +65,35 @@ export const Marketplace = () => {
     }
     
     //filter through pets array to choose something similar to input
-    const searchByName = () => {
-        console.log(searchString)
-        const arr = populatePets.filter(pet => pet.name.toLowerCase().includes(searchString.toLowerCase()))
-        setPets(arr)
-    }
+    // const searchByName = () => {
+    //     console.log(searchString)
+    //     const arr = populatePets.filter(pet => pet.name.toLowerCase().includes(searchString.toLowerCase()))
+    //     setPets(arr)
+    // }
 
     //initial fetch which filters pets available by date
     const fetchByDate = async () => {
       try {  
-        const data = await fetch(`/api/pet/date/${searchByDate}`, {
-            method: "GET"
+        const data = await fetch(`/api/pet/date/`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                searchDate: searchByDate,
+                petName: searchString
+            })
         })
         const response = await data.json()
         setPets(response)
-        setPopulatePets(response)
+        setReRender(false)
+        // setPopulatePets(response)
       } catch(err) {
         console.log(err)
       }
     }
  
     useEffect(() => {
-        fetchByDate()
-    }, [])
+      fetchByDate()
+    }, [searchString])
 
     return (
         <div id='marketplace'>

@@ -42,12 +42,7 @@ petController.getPetsByName = async (req, res, next) => {
 petController.getAllPets = async (req, res, next) => {
   console.log(req.params.name)
   console.log('inside petController.getAllPets');
-<<<<<<< HEAD
   // if (req.params.name === '') {
-=======
-  // if (req.params.name === undefined) {
-    // console.log('inside petController.getAllPets - no name')
->>>>>>> dev
     try {
       const queryString = 'SELECT * FROM pet LIMIT 10';
       const data = await db.query(queryString);
@@ -59,16 +54,8 @@ petController.getAllPets = async (req, res, next) => {
         message: { err: 'petController.getAllPets: check server log for details' }
       });
     }
-<<<<<<< HEAD
   // } else {
   //   try {
-=======
-  // }
-  // JW - searching for a specifc pet name, commented out to avoid error in marketplace rendering
-  // else {
-  //   try {
-  //     console.log('inside petController.getAllPets - with name')
->>>>>>> dev
   //     const values = [req.params.name]
   //     const queryString = `SELECT * FROM pet WHERE name ILIKE '%$1%'`
   //     const data = await db.query(queryString, values);
@@ -84,10 +71,14 @@ petController.getAllPets = async (req, res, next) => {
 }
 
 petController.getByDate = async (req, res, next) => {
-  console.log(req.params.date)
-  const date = req.params.date
+  const date = req.body.searchDate
   const values = [date]
-  const queryString = 'SELECT * FROM pet WHERE _id NOT IN (SELECT pet_id FROM reservation WHERE date = $1)'
+  const queryString = `SELECT * 
+  FROM pet 
+  WHERE _id NOT IN 
+  (SELECT pet_id FROM reservation WHERE date = $1)
+  AND name ILIKE '%${req.body.petName}%'
+  LIMIT 100`
   try {
     const data = await db.query(queryString, values);
     res.locals.pets = data.rows;
