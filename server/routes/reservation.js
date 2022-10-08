@@ -3,7 +3,7 @@ const router = express.Router();
 
 const reservationController = require('../controllers/reservationController.js');
 
-// create
+// create - new reservation
 router.post('/', reservationController.createReservation, (req, res) => {
     return res.status(200).json(res.locals.reservation);
 });
@@ -17,5 +17,10 @@ router.get('/user/:username', reservationController.readUserReservation, (req, r
 router.get('/pet/:petId', reservationController.readPetReservation, (req, res) => {
   return res.status(200).json(res.locals.reservations);
 });
+
+// delete - delete reservations by petId
+router.get('/pet/:petId', reservationController.deletePetReservation, (req, res) => {
+  return res.status(200).json(res.locals.reservations);
+})
 
 module.exports = router;

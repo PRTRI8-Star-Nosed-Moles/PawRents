@@ -4,18 +4,15 @@ const SALT_WORK_FACTOR = 10;
 
 const userController = {};
 
+// create - create a user hased password with BCRYPT
 userController.createUser = async (req, res, next) => {
   console.log('inside userController.createUser');
-
    try {
     const { username, password, firstName, lastName, zipcode, email } = req.body;
-
-    console.log('password not hashed', password);
     const hashedPassword = await bcrypt.hash(password, SALT_WORK_FACTOR);
-
     const values = [ username, hashedPassword, firstName, lastName, zipcode, email ];
     const queryString = 'INSERT INTO "user" (username, password, firstname, lastname, zipcode, email) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
-  
+    
     const data = await db.query(queryString, values);
     res.locals.user = data.rows[0];
     return next();
@@ -27,16 +24,14 @@ userController.createUser = async (req, res, next) => {
   }
 };
 
+// read - get user, has 'not found' user handling
 userController.getUser = async (req, res, next) => {
   console.log('accessing userController.getUser');
-  console.log(req.body)
-
-  const { username } = req.params;
-  const queryString = `SELECT * FROM "user" WHERE username='${username}'`;
-  
   try {
+    const { username } = req.params;
+    const queryString = `SELECT * FROM "user" WHERE username='${username}'`;
+
     const data = await db.query(queryString);
-    console.log('getUser data ->', data);
 
     // handle user not found
     if (data.rows.length === 0) {

@@ -3,16 +3,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 export const Login = () => {
-
+    //set use navigate to be used after validating user info
     const navigate = useNavigate()
-
+    //collects data from login form
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     })
 
     const [invalidLogin, setInvalidLogin] = useState('')
-
+    //form submit function that sends login info to backend
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -21,8 +21,9 @@ export const Login = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
-          })
-          const data = await response.json()
+          });
+          const data = await response.json();
+          //if login validated redirect to marketplace and set username in session storage
           if (data.status === true) {
             sessionStorage.setItem('username', formData.username)
             navigate('/marketplace')
@@ -32,13 +33,14 @@ export const Login = () => {
         } catch(err) {
           console.log(err)
         }
-        
+        //reset form data
         setFormData({
             username: '',
             password: ''
         })
     }
 
+    //onchange function for username input
     const changeUsername = (e) => {
       setFormData({
         ...formData,
@@ -46,7 +48,7 @@ export const Login = () => {
       })
       console.log(formData)
     }
-
+    //onchange function for password input
     const changePassword = (e) => {
         setFormData({
             ...formData,
@@ -65,7 +67,7 @@ export const Login = () => {
                 value={formData.username}
                 name="username"
                 placeholder = "username"
-                className = "formInput"
+                className = "searchInput"
               />
             </label>
             <p></p>
@@ -76,7 +78,7 @@ export const Login = () => {
                 value={formData.password}
                 name="password"
                 placeholder = "password"
-                className = "formInput"
+                className = "searchInput"
               />
             </label>
             <p></p>

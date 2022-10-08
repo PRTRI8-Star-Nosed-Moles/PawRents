@@ -5,14 +5,18 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 export const Marketplace = () => {
+    //add use navigate to return to login page if username not in session storage
     const navigate = useNavigate()
     if (sessionStorage.getItem('username') === null) {
         navigate('/')
       }
+
     //get todays date
     const date = new Date()
-    //turn it into format postgres likes
+
+    //turn date into format postgres likes
     const today = date.toISOString().slice(0, 10)
+
     //create a readable string to show users
     const todayReadable = date.toString().slice(0, 15)
 
@@ -26,12 +30,10 @@ export const Marketplace = () => {
     const [searchString, setSearchString] = useState('')
     //set the readable date for users
     const [readableDate, setReadableDate] = useState(todayReadable)
-    const [reRender, setReRender] = useState(true)
 
     //onchange function for name search input
     const changeSearchString = (e) => {
         setSearchString(e.target.value)
-        //invoke function to filter results
         fetchByDate()
     }
 
@@ -39,37 +41,18 @@ export const Marketplace = () => {
     const changeRentalDate = (e) => {
         setSearchByDate(e.target.value)
     }
-    
-    //function to get all pets with no filter
-    // const fetchPets = async () => {
-    //   try {
-    //     const response = await fetch(`/api/pet/`, {
-    //         method: "GET"
-    //     })
-    //     const data = await response.json();
-    //     console.log(data)
-    //     setPets(data)
-    //     setPopulatePets(data)
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // } 
 
-    //form for choosing date
+    //form on submit function for choosing date
     const handleSubmit = (e) => {
         e.preventDefault()
         const newDate = new Date(e.target[0].value)
+        //create a user readable date string
         setReadableDate(newDate.toString().slice(0, 15))
+        //set the date to send to backend
         setSearchByDate(e.target[0].value)
+        //fetch pets again to refresh pets array
         fetchByDate()
     }
-    
-    //filter through pets array to choose something similar to input
-    // const searchByName = () => {
-    //     console.log(searchString)
-    //     const arr = populatePets.filter(pet => pet.name.toLowerCase().includes(searchString.toLowerCase()))
-    //     setPets(arr)
-    // }
 
     //initial fetch which filters pets available by date
     const fetchByDate = async () => {
@@ -84,13 +67,12 @@ export const Marketplace = () => {
         })
         const response = await data.json()
         setPets(response)
-        setReRender(false)
-        // setPopulatePets(response)
       } catch(err) {
         console.log(err)
       }
     }
  
+    //use effect is listening to the search by name input box to re render
     useEffect(() => {
       fetchByDate()
     }, [searchString])
@@ -119,25 +101,3 @@ export const Marketplace = () => {
         </div>
     )
 }
-
-// export const Search = ({ getQuery}) => {
-//     const [text, setText] = useState('')
-
-//     const onChange = (e) => {
-//         setText(e.target.value)
-//         getQuery(e)
-//     }
-
-//     return (
-//         <section className='search'>
-//             <form>
-//                 <input
-//                 type='text'
-//                 placeholder='Search pets...'
-//                 value={text}
-//                 onChange={setText}
-//                 />
-//             </form>
-//         </section>
-//     )
-// }

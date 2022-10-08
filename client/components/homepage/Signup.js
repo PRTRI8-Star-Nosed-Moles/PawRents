@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 export const Signup = () => {
 
     const navigate = useNavigate()
-
+    //state for all form input data
     const [userData, setNewUser] = useState({
         firstName: '',
         lastName: '',
@@ -15,10 +15,10 @@ export const Signup = () => {
         password: '',
         password2: ''
     })
-
+    //on submit function for sign in form
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // //add fetch to check pswd and username
+        
         try {
             const data = await fetch('/api/user', {
                 method: "POST",
@@ -26,12 +26,14 @@ export const Signup = () => {
                 body: JSON.stringify(userData)
             })
             const response = await data.json()
-            console.log(response)
-            navigate('/marketplace', {state: {username: response.username}})
+            //navigate to marketplace after successful sign up and set username in session storage
+            sessionStorage.setItem('username', userData.username)
+            navigate('/marketplace')
         } catch(err) {
             console.log(err)
             alert('Please fill out the required fields.');
         }
+        //reset sign in form data
         setNewUser({
             firstName: '',
             lastName: '',
@@ -42,7 +44,7 @@ export const Signup = () => {
             password2: ''
         })
     }
-
+    //onchange functions for form
     const changeFirstName = (e) => {
         setNewUser({
             ...userData,

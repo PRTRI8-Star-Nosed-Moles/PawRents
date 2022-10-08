@@ -5,9 +5,10 @@ import { Login } from './Login';
 import { Signup } from './Signup';
 
 export const Home = () => {
-
+  //switch between sign in and log in component
   const [loginSignup, setLoginSignup] = useState('login')
 
+  //change login vs signup state on button click
   const condition = () => {
     loginSignup === 'login' ? setLoginSignup('signup') : setLoginSignup('login')
   }

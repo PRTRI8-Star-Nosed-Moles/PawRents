@@ -5,6 +5,7 @@ const SALT_WORK_FACTOR = 10;
 
 const loginController = {};
 
+// validate via Bcrypt.compare, return validation status to front end
 loginController.validateUser = async (req, res, next) => {
   console.log('inside validateUser middleware')
   try {
@@ -16,7 +17,8 @@ loginController.validateUser = async (req, res, next) => {
     
     //IN CASE OF USER NOT FOUND RESPOND: NOT FOUND
     if (data.rows.length === 0) return res.status(404).json({"message": "user not found"});
-
+    
+    //BCRYPT.COMPARE FOR VALIDITY
     const valid = await bcrypt.compare(password, data.rows[0].password);
 
     if (valid) {
@@ -34,18 +36,5 @@ loginController.validateUser = async (req, res, next) => {
     });
   }
 }
-
-// userController.verifyUser = async (req, res, next) => {
-//   const user = await User.find({ username: req.body.username });
-//   if (user.length) {
-//     const info = user[0]._doc;
-//     const userpwd = info.password;
-//     const isValidPW = await bcrypt.compare(req.body.password, userpwd);
-//     if (isValidPW) {
-//       res.locals.ID = info._id;
-//       return next();
-//     }
-//     // else return res.sendFile(path.resolve(__dirname, '../../client/signup.html'));
-//   }
 
 module.exports = loginController;
