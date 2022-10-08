@@ -148,6 +148,7 @@ petController.updatePet = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { bio } = req.body;
+    console.log("req.body", req.body)
     const queryString = `
       UPDATE pet 
       SET bio = '${bio}'
