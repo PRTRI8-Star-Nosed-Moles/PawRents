@@ -173,7 +173,9 @@ export const Signup = () => {
                         <p>Agree to terms and conditions</p>
                     </div>
                     <p></p>
-                    <button type="submit" className="buttonStyles">sign up</button>
+                    <div className="signupButtonContainer">
+                    <button type="submit" className="buttonStyles">submit</button>
+                    </div>
                 </form>
             </div>
             {/* <Link to="/">Login</Link> */}

@@ -16,6 +16,7 @@ export const AddPet = (props) => {
 
     const handleSubmit = async (e) => {
         console.log(username)
+        console.log('submit')
         e.preventDefault();
         const data = await fetch(`/api/pet/${username}`, {
             method: "POST",
@@ -24,6 +25,7 @@ export const AddPet = (props) => {
         })
         const response = await data.json();
         console.log(response);
+        props.fetch()
     }
 
     const changeName = (e) => {

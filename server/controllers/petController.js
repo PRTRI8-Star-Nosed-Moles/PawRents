@@ -22,14 +22,30 @@ petController.createPet = async (req, res, next) => {
   }
 }
 
+petController.getPetsByName = async (req, res, next) => {
+  try {
+        const values = req.body.string
+        const queryString = `SELECT * FROM pet WHERE name ILIKE '%${values}%'`
+        const data = await db.query(queryString, values);
+        res.locals.pets = data.rows;
+        return next();
+      } catch (error) {
+        return next({
+          log: 'Express error handler caught error in petController.getAllPets',
+          message: { err: 'petController.getAllPets: check server log for details' }
+        });
+      }
+}
+
 //READ
 //get all pets to retrieve all Pets in DB
 petController.getAllPets = async (req, res, next) => {
+  console.log(req.params.name)
   console.log('inside petController.getAllPets');
   // if (req.params.name === undefined) {
     // console.log('inside petController.getAllPets - no name')
     try {
-      const queryString = 'SELECT * FROM pet';
+      const queryString = 'SELECT * FROM pet LIMIT 10';
       const data = await db.query(queryString);
       res.locals.pets = data.rows;
       return next()
@@ -59,16 +75,17 @@ petController.getAllPets = async (req, res, next) => {
 }
 
 petController.getByDate = async (req, res, next) => {
+  console.log(req.params.date)
   const date = req.params.date
-  const values = date
-  const queryString = 'SELECT * FROM pet WHERE _id NOT IN (SELECT pet_id FROM reservation WHERE date = $1'
+  const values = [date]
+  const queryString = 'SELECT * FROM pet WHERE _id NOT IN (SELECT pet_id FROM reservation WHERE date = $1)'
   try {
     const data = await db.query(queryString, values);
     res.locals.pets = data.rows;
     return next()
   } catch(err) {
     return next({
-      log: 'Express error handler caught error in petController.getAllPets',
+      log: 'Express error handler caught error in petController.getByDate',
       message: { err: 'petController.getAllPets: check server log for details' }
     });
   }
@@ -131,6 +148,7 @@ petController.updatePet = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { bio } = req.body;
+    console.log("req.body", req.body)
     const queryString = `
       UPDATE pet 
       SET bio = '${bio}'
