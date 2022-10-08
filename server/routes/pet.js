@@ -40,7 +40,7 @@ router.patch('/:id', petController.updatePet, (req, res) => {
 })
 
 // delete pet - stretch
-router.delete('/:id', petController.deletePet, (req, res) => {
+router.delete('/', petController.deletePet, (req, res) => {
   return res.status(200).json(res.locals.pet);
 })
 
