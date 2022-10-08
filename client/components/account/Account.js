@@ -66,12 +66,9 @@ export const Account = () => {
         <div className="account-container">
           <h4>{username}</h4>
           <h5>My pets</h5>
-
-          <div id="pets-display">
-            {myPets.map((pet, i) => <MyPets key={i} obj={pet} fetchPets={fetchPets}/>)}
-          </div>
-          {petAdd === false ? '' : <AddPet/>}
-          <button onClick={changeAdd} className="buttonStyles">add pet</button>
+          {myPets.length ? myPets.map((pet, i) => <MyPets fetch={fetchPets} key={i} obj={pet}/>) : <p>You have no pets, sad face</p>}
+          {petAdd === false ? '' : <AddPet fetch={fetchPets}/>}
+          <button onClick={changeAdd} className="buttonStyles">Add Pet</button>
           
           <div id="account-history">
             {/* <YourPetRentalHistory /> */}

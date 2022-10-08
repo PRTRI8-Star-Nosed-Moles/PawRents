@@ -169,7 +169,7 @@ export const AddPet = (props) => {
                     ></input>
                 </div>
                 <p></p>
-                <button type="submit" className="buttonStyles" onClick={changeAdd}>add pet</button>
+                <input type="submit" className="buttonStyles"/>
             </form>
     )
 }

@@ -75,10 +75,14 @@ petController.getAllPets = async (req, res, next) => {
 }
 
 petController.getByDate = async (req, res, next) => {
-  console.log(req.params.date)
-  const date = req.params.date
+  const date = req.body.searchDate
   const values = [date]
-  const queryString = 'SELECT * FROM pet WHERE _id NOT IN (SELECT pet_id FROM reservation WHERE date = $1)'
+  const queryString = `SELECT * 
+  FROM pet 
+  WHERE _id NOT IN 
+  (SELECT pet_id FROM reservation WHERE date = $1)
+  AND name ILIKE '%${req.body.petName}%'
+  LIMIT 100`
   try {
     const data = await db.query(queryString, values);
     res.locals.pets = data.rows;
