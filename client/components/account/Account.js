@@ -68,7 +68,7 @@ export const Account = () => {
           <h5>My pets</h5>
 
           <div id="pets-display">
-            {myPets.map((pet, i) => <MyPets key={i} obj={pet}/>)}
+            {myPets.map((pet, i) => <MyPets key={i} obj={pet} fetchPets={fetchPets}/>)}
           </div>
           {petAdd === false ? '' : <AddPet/>}
           <button onClick={changeAdd} className="buttonStyles">add pet</button>

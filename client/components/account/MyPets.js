@@ -23,6 +23,36 @@ export const MyPets = (props) => {
         fetchRentalDates()
     }, [])
 
+    //Save State via updateBio input field via onchange;
+    const [bioUpdate, setBioUpdate] = useState('')
+
+    const handleUpdateChange = event => {
+      setBioUpdate(event.target.value);
+      // console.log('bioupdate', bioUpdate)
+    }
+
+    //UPDATE PET BUTTON
+    const updatePet = async () => {
+      console.log('updatePet')
+      try {
+        const data = await fetch(`/api/pet/${props.obj._id}`, {
+          method: "PATCH",
+          body: JSON.stringify({
+            bio: bioUpdate
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+        const response = await data.json()
+        console.log(response)
+        props.fetchPets()
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    //DELETE PET BUTTON
     const deletePet = async () => {
       try {
         const data = await fetch(`/api/pet/${props.obj._id}`, {
@@ -44,6 +74,12 @@ export const MyPets = (props) => {
             <div className="account-pet-detail">Age:<span>{props.obj.age}</span></div>
             <div className="account-pet-detail">Current Listed Price:<span>{props.obj.price}</span></div>
             <div className="account-pet-detail">Bio:<span>{props.obj.bio}</span></div>
+
+            <div className="petButtonContainer">
+              <input type="text" onChange={e => handleUpdateChange(e)} placeholder='New Bio' className="searchInput"></input>
+              <button className="searchButton" onClick={e => updatePet()}>Update</button>
+              <button className="searchButton">Delete</button>
+            </div>
           </div>
           <div>
            

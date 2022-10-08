@@ -406,6 +406,12 @@ h5 {
     justify-content: center;
 }
 
+.petButtonContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 #addPetForm {
     font-family: $headerFont;
     padding: 20px;
