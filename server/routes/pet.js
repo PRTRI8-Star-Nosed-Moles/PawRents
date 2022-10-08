@@ -17,7 +17,7 @@ router.get('/mypets/:username', petController.getMyPets, (req, res) => {
 })
 
 // get ALL pets
-// JW - revered to '/' for now to avoid errors in marketplace rendering
+// JW - reverted to '/' for now to avoid errors in marketplace rendering
 // router.get('/:name', petController.getAllPets, (req, res) => {
 router.get('/', petController.getAllPets, (req, res) => {
   return res.status(200).json(res.locals.pets);
