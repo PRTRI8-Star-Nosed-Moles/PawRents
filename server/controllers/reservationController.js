@@ -62,7 +62,7 @@ reservationController.readPetReservation = async (req, res, next) => {
 reservationController.deletePetReservation = async (req, res, next) => {
   console.log('inside reservationController.deletePetReservation');
   try {
-    const { petId } = req.params;
+    const { petId } = req.body;
     const queryString = `
       DELETE
       FROM reservation

@@ -17,6 +17,7 @@ export const AddPet = (props) => {
 
     //handleSubmit posts the data in the form to the pet table
     const handleSubmit = async (e) => {
+        console.log('inside AddPet - handleSubmit');
         //preventDefault so it doesn't reload the page
         e.preventDefault();
         const data = await fetch(`/api/pet/${username}`, {

@@ -338,7 +338,8 @@ h5 {
 }
 
 .c-back {
-  background-color: $darkerGreen;
+  background-image: linear-gradient($darkerGreen, $background);
+  border-radius: 6px;
   color: white;
   padding: 0px;
   transform: rotateY(180deg);
@@ -389,6 +390,10 @@ h5 {
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
+
+    .p {
+      font-family: $bodyFont;
+    }
 }
 
 #pets-display {

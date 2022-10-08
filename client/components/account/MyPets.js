@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {YourPetRentalHistoryCardNew} from './YourPetRentalHistoryCardNew';
 
 export const MyPets = (props) => {
   //Dates that this pet has been rented
@@ -14,7 +15,7 @@ export const MyPets = (props) => {
 
   //UPDATE PET BUTTON
   const updatePet = async () => {
-    console.log('updatePet')
+    console.log('inside MyPets - updatePet')
     try {
       const data = await fetch(`/api/pet/${props.obj._id}`, {
         method: "PATCH",
@@ -32,36 +33,44 @@ export const MyPets = (props) => {
       console.log(err)
     }
   }
+  
   //delete pet button function  
   const deletePet = async (e) => {
-    console.log('inside handleDelete');
+    console.log('inside MyPets - handleDelete');
     e.preventDefault();
 
-    const petData = {
-      name: props.obj.name,
-      age: props.obj.age,
-      price: props.obj.price,
-    };
-    const data = await fetch('/api/pet/', {
-        method: "DELETE",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(petData)
-    })
-    const response = await data.json();
+    try {
+      const petData = {
+        name: props.obj.name,
+        age: props.obj.age,
+        price: props.obj.price,
+        petId: props.obj._id,
+      };
+      const data = await fetch('/api/pet/', {
+          method: "DELETE",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(petData)
+      })
+      const response = await data.json();
+      props.fetchPets();
+    } catch (error) {
+      console.log(err);
+    }
   }
 
   //fetch GET's the rental dates for your pet
   const fetchRentalDates = async () => {
-      try {
-        const data = await fetch(`/api/reservation/pet/${pet._id}`, {
-          method: "GET"
-        });
-        const response = await data.json()
-        setRentalDates(response)
-        console.log("fetchRentalDates resonse: ",response)
-      } catch(err) {
-        console.log('error' + err)
-      }
+    console.log('inside MyPets - fetchRentalDates');
+    try {
+      const data = await fetch(`/api/reservation/pet/${props.obj._id}`, {
+        method: "GET"
+      });
+      const response = await data.json()
+      setRentalDates(response)
+      console.log("fetchRentalDates resonse: ",response)
+    } catch(err) {
+      console.log('error' + err)
+    }
   }
 
   //updates the pet rental dates on render
@@ -87,15 +96,28 @@ export const MyPets = (props) => {
           </div>
           
           <div className="petButtonContainer">
-            <input type="text" onChange={e => handleUpdateChange(e)} placeholder='New Bio' className="searchInput">
+            <input
+              type="text"
+              onChange={e => handleUpdateChange(e)}
+              placeholder='New Bio'
+              className="searchInput">
             </input>
-            <button className="buttonStyles" onClick={e => updatePet()}>Update
+            
+            <button
+              className="buttonStyles"
+              onClick={e => updatePet()}
+            >
+              Update
             </button>
-            <button className="buttonStyles" onClick={deletePet}>delete
+            <button
+              className="buttonStyles"
+              onClick={deletePet}
+            >
+              delete
             </button>   
           </div>
 
-          {rentalDates.length ? rentalDates.map((rental, i) => <YourPetRentalHistoryCard key={i} rental={rental}/>) : <p>Your pet has no rentals</p>}
+          {rentalDates.length ? rentalDates.map((rental, i) => <YourPetRentalHistoryCardNew key={i} rental={rental}/>) : <p>Your pet has no rentals</p>}
         </div>
       </div>
   )

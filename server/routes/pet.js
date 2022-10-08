@@ -3,6 +3,7 @@ const router = express.Router();
 
 // require controllers
 const petController = require('../controllers/petController.js');
+const reservationController = require('../controllers/reservationController.js')
 
 // read - request from marketplace page, passing in date selected
 router.post('/date', petController.getByDate, (req, res) => {
@@ -40,7 +41,7 @@ router.patch('/:id', petController.updatePet, (req, res) => {
 })
 
 // delete - single pet
-router.delete('/', petController.deletePet, (req, res) => {
+router.delete('/', petController.deletePet, reservationController.deletePetReservation, (req, res) => {
   return res.status(200).json(res.locals.pet);
 })
 
