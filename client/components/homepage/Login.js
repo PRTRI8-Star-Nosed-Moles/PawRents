@@ -10,34 +10,36 @@ export const Login = () => {
         username: '',
         password: ''
     })
-
+    // set state of login validity
     const [invalidLogin, setInvalidLogin] = useState('')
+
     //form submit function that sends login info to backend
     const handleSubmit = async (e) => {
-        e.preventDefault()
+      console.log('inside Login - handleSubmit')
+      e.preventDefault();
 
-        try {
-          const response = await fetch('/api/login', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
-          });
-          const data = await response.json();
-          //if login validated redirect to marketplace and set username in session storage
-          if (data.status === true) {
-            sessionStorage.setItem('username', formData.username)
-            navigate('/marketplace')
-          } else {
-            setInvalidLogin('invalid')
-          }
-        } catch(err) {
-          console.log(err)
+      try {
+        const response = await fetch('/api/login', {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
+        const data = await response.json();
+        //if login validated redirect to marketplace and set username in session storage
+        if (data.status === true) {
+          sessionStorage.setItem('username', formData.username)
+          navigate('/marketplace')
+        } else {
+          setInvalidLogin('invalid')
         }
-        //reset form data
-        setFormData({
-            username: '',
-            password: ''
-        })
+      } catch(err) {
+        console.log(err)
+      }
+      //reset form data
+      setFormData({
+          username: '',
+          password: ''
+      })
     }
 
     //onchange function for username input

@@ -1,3 +1,4 @@
+/* resets browser styling */
 * {
     margin: 0;
     text-transform: lowercase;
@@ -390,10 +391,11 @@ h5 {
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
+}
 
-    .p {
-      font-family: $bodyFont;
-    }
+#noPets {
+    font-family: $bodyFont;
+    color: $brown;
 }
 
 #pets-display {

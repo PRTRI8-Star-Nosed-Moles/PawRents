@@ -33,7 +33,7 @@ export const YourUserRentalHistory = () => {
     <div>
         <h5>My user rental history</h5>
         {
-          petsRented.length ? petsRented.map((history, i) => <YourUserRentalHistoryCard key={i} obj={history}/>) : <p>No pets rented yet.</p>
+          petsRented.length ? petsRented.map((history, i) => <YourUserRentalHistoryCard key={i} obj={history}/>) : <p id="noRentals">No pets rented yet.</p>
         }
     </div>
   )
