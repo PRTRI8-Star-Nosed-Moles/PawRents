@@ -5,8 +5,8 @@ export const Navbar = () => {
   return (
     <div className = "navBar">
       <div className="logoContainer">
-        <img src="https://cdn.discordapp.com/attachments/1024155635899707454/1025859884631195769/unknown.png" className="logoImg"/>
-        <span className="logoText">pawrents</span>
+        <img src="https://cdn.discordapp.com/attachments/1024155635899707454/1028362779448590416/Untitled_Artwork_2.png" className="logoImg"/>
+        {/* <span className="logoText">pawrents</span> */}
       </div>
       <ul>
         <li>

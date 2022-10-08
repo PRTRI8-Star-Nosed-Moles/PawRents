@@ -1,14 +1,20 @@
 # Scratch-Project
 
 component tree:
-- navigation
-- login
-- sign-up
 - account
-    - user info
-    - rental history
-        - rental card
+    - Account
+        - AddPet
+        - MyPets
+            - YourPetRentalHistoryCardNew
+        - YourUserRentalHistory
+            - YourUserRentalHistoryCard 
+- homepage
+    - Home
+        - Login
+        - Navbar
+        - Search
+        - Signup
 - marketplace
-    - marketplace display
-    - marketplace container
-        - pet card
+    - Marketplace
+        - PetCard
+
