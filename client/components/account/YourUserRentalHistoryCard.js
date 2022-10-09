@@ -1,15 +1,14 @@
 import React from 'react';
 
 export const YourUserRentalHistoryCard = (props) => {
+    //destructures props so that you don't have to use props. before variable
     const {
         date,
         pet_id,
         name,
     } = props.obj
-
-    //need to link pet_id with pet name to render name here
-    //adding comment here
     
+    //declares a variable for a new date and then formats the date
     const resDate = new Date(date)
     const dateRead = resDate.toString().slice(0, 15)
     const day = resDate.getDate()
@@ -17,9 +16,11 @@ export const YourUserRentalHistoryCard = (props) => {
     const year = resDate.getFullYear()
 
     return (
-        <div className="account-rental-card" >
-            <p>Date: {month + '/'+day + '/' + year}</p>
-            <p>You are renting: {name}</p>
+        <div className="account-pet-card" >
+            <ul>
+                <li>Date: {dateRead}</li>
+                <li>You are renting: {name}</li>
+            </ul>         
         </div>
     )
 }

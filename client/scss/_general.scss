@@ -1,12 +1,10 @@
+/* resets browser styling */
 * {
     margin: 0;
     text-transform: lowercase;
 }
 
-html {
-    background-color: $tan;
-}
-
+/* css for <body> tag  */
 body {
     background-color: $tan;
     height: 100vh;
@@ -18,9 +16,7 @@ body {
     overflow:auto
 }
 
-/*
-form class is div around entire form in signup
-*/
+/*NAVBAR*/
 .navBar { 
     display: flex;
     align-items: center;
@@ -57,23 +53,40 @@ form class is div around entire form in signup
     color: white;
 }
 
+/*LOGO*/
 .logoContainer {
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding: 4px 16px 4px 16px;
     margin-left: 20px;
-    background-color: $lightOrange;
-    border-radius: 10px;
+    border-radius: 4px;
     font-family: $bodyFont;
     color: black;
 }
 
 .logoImg {
-    width: 40px;
+    width: 60px;
 }
 
+.logoHome {
+    height: 300px;
+}
 
+.logoLoginContainer {
+    // border: purple 1px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    height: 100%;
+    padding-top: 150px;
+
+}
+
+/*HEADERS*/
+/* 
+* h4 for username
+*/
 h4 {
     margin-top: 8px;
     margin-bottom: 15px;
@@ -82,21 +95,16 @@ h4 {
     color: $brown;
     text-align: center;
 }
-
+/*
+* h5 for My Pets headers in middle of page
+*/
 h5 {
     font-family: $headerFont;
     font-size: 1.5em;
     color: $orange;
     text-align: center;
 }
-
-.formInput {
-    font-family: $bodyFont;
-    margin: .5em;
-    border-radius: 6px;
-    padding: 4px;
-}
-
+/*BUTTONS*/
 .buttonStyles {
     font-family: $headerFont;
     font-size: 16px;
@@ -156,14 +164,17 @@ h5 {
     outline: 0;
 }
 
+/*HOME PAGE*/
 .splashContainer {
     display: flex;
-    justify-content: left;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     padding-left: 10vw;
     background-image: url("https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     height: 100%;
 }
 
@@ -171,6 +182,7 @@ h5 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 4px;
 }
 
 .loginButton {
@@ -189,6 +201,7 @@ h5 {
     background-color: $tan;
 }
 
+/*SIGNUP PAGE*/
 .signup-form {
     font-family: $headerFont;
     padding: 20px 20px 0px 20px;
@@ -219,16 +232,9 @@ h5 {
     justify-content: center;
 }
 
-// #marketplace {
-//     width: 100%;
-//     max-width: 1100px;
-//     box-sizing: border-box;
-//     padding: 155px;
-//     display: grid;
-//     // margin: 155px;
-// }
+/* MARKETPLACE */
 
-//SEARCH
+/*SEARCH*/
 .searchContainer {
     display: flex;
     align-items: center;
@@ -273,6 +279,7 @@ h5 {
     margin-left: 6px;
 }
 
+/* Marketplace cards*/
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -337,6 +344,7 @@ h5 {
 
 .c-back {
   background-image: linear-gradient($darkerGreen, $background);
+  border-radius: 6px;
   color: white;
   border-radius: 6px;
   padding: 0px;
@@ -380,23 +388,7 @@ h5 {
     padding: 3px;
 }
 
-/* Search bar CSS -Y */
-// .searchbar {
-//     display: flex;
-//     justify-content: center;
-    
-// }
-.searchbar input[type=text] {
-    padding: 15px;
-    width: 50%;
-    margin-left: 15px;
-    border: none;
-    margin-top: 20px;
-    font-size: 17px;
-}
-
-
-/* ACCOUNT PAGE CSS */
+/* ACCOUNT PAGE */
 .account-container {
     display: flex;
     flex-direction: column;
@@ -404,6 +396,17 @@ h5 {
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
+}
+
+#noPets {
+    font-family: $bodyFont;
+    color: $brown;
+}
+
+#noRentals {
+    font-family: $bodyFont;
+    color: $brown;
+    text-align: center;
 }
 
 #pets-display {
