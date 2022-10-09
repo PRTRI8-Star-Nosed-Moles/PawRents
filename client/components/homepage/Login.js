@@ -84,16 +84,12 @@ export const Login = () => {
               />
             </label>
             <p></p>
-<<<<<<< HEAD
-            <div><button type="submit" className="buttonStyles">log in</button></div>
-=======
             <button
               type="submit" 
               className="buttonStyles"
             >
               log in
             </button>
->>>>>>> dev
           </form>
           <div>
           {invalidLogin === 'invalid' ? <p>Username and password invalid</p> : ''}

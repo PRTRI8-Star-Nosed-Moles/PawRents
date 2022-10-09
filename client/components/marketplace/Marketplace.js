@@ -79,72 +79,6 @@ export const Marketplace = () => {
     fetchByDate()
   }, [searchString])
 
-<<<<<<< HEAD
-    //initial fetch which filters pets available by date
-    const fetchByDate = async () => {
-      try {  
-        const data = await fetch(`/api/pet/date/${searchByDate}`, {
-            method: "GET"
-        })
-        const response = await data.json()
-        setPets(response)
-        setPopulatePets(response)
-      } catch(err) {
-        console.log(err)
-      }
-    }
- 
-    useEffect(() => {
-        fetchByDate()
-    }, [])
-
-    return (
-        <div id='marketplace'>
-            <section className="searchContainer">
-                <label>
-                    Search by name:
-                    <input type="text" onChange={changeSearchString} value={searchString}  className="searchInput"/>
-                </label>
-                <form onSubmit={handleSubmit} className="searchForm">
-                    <p>Searching for pets available on: <span className="blackText">{readableDate}</span></p>
-                    <label>
-                        Change date:
-                        <input type="date" onChange={changeRentalDate} className="searchInput"/>
-                    </label>
-                    <input type="submit" value="Search" className="searchButton"/>
-                </form>
-            </section>
-            <section className='cards'>
-            {pets.map((pet, i) => (
-                <PetCard key={i} item={pet}></PetCard>
-            ))}
-            </section>
-        </div>
-    )
-}
-
-// export const Search = ({ getQuery}) => {
-//     const [text, setText] = useState('')
-
-//     const onChange = (e) => {
-//         setText(e.target.value)
-//         getQuery(e)
-//     }
-
-//     return (
-//         <section className='search'>
-//             <form>
-//                 <input
-//                 type='text'
-//                 placeholder='Search pets...'
-//                 value={text}
-//                 onChange={setText}
-//                 />
-//             </form>
-//         </section>
-//     )
-// }g
-=======
   return (
     <div id='marketplace'>
       <section className="searchContainer">
@@ -169,4 +103,3 @@ export const Marketplace = () => {
     </div>
   )
 }
->>>>>>> dev
