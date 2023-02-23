@@ -24,7 +24,7 @@ Currently in Alpha.
 Register an account by entering a username and password, and view our demo of pets and accounts.
 
 <p align="center">
-  <img width="600" src="https://user-images.githubusercontent.com/3701668/220828211-aa8639cb-85c4-4acf-8398-8a3c4be0b36c.gif"> <br><br>
+  <img width="600" src="https://user-images.githubusercontent.com/3701668/220832250-48db8079-b61a-479e-b4f7-64c5eb2993a6.gif"> <br><br>
 </p>
 
 # **Features** <br>
