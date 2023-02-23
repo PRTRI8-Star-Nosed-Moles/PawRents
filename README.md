@@ -30,19 +30,19 @@ Register an account by entering a username and password, and view our demo of pe
 # **Features** <br>
 
 ### **Search Feature** <br>
-When you login and begin to type into the search bar the pets with names containing the typed letters filter out in the marketplace
+When you login and begin to type into the search bar the pets with names containing the typed letters filter out in the marketplace.
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/3701668/220828415-2f3038b6-27c9-4bd1-a0da-a23e4014cd4b.gif"> <br><br>
 </p>
 
 ### **Add a Pet** <br>
-You can add pets that you want to rent out adding profile info such as name, breed, age, weight and bio.
+Pet owners can add pets that you want to rent out adding details such as profile info such as name, breed, age, weight and bio. After the pet has been added it shows up in their "my pets" section in their account. The pet shows in the marketplace once a pet is added.
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/3701668/220828566-fa34dcf8-97b0-48c4-bf38-ce3da3dc5f54.gif"> <br><br>
 </p>
 
 ### **Rent a Pet** <br>
-Scroll over the photo and you can view a calendar to choose when you would like to rent the pet.
+Additionally, thre is functionality for the pet renter. The pet renter can scroll over the photo and you can view a calendar to choose when you would like to rent the pet.
 
 
 # **Tech Stack**
