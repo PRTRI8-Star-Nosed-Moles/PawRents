@@ -38,7 +38,7 @@ When you login and begin to type into the search bar the pets with names contain
 ### **Add a Pet** <br>
 Pet owners can add pets that you want to rent out adding details such as profile info such as name, breed, age, weight and bio. After the pet has been added it shows up in their "my pets" section in their account. The pet shows in the marketplace once a pet is added.
 <p align="center">
-  <img width="600" src="https://user-images.githubusercontent.com/3701668/220828566-fa34dcf8-97b0-48c4-bf38-ce3da3dc5f54.gif"> <br><br>
+  <img width="600" src="https://user-images.githubusercontent.com/3701668/221373893-d9288f60-b688-46de-a712-fdc2a96a5570.gif"> <br><br>
 </p>
 
 ### **Rent a Pet** <br>
